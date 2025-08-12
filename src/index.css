@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font: 1em / 1.5 "Roboto", sans-serif;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 2.7rem;
+  color: #333;
+}
+
+h2 {
+  color: #333;
+}
+
+a {
+  color: #6d3465;
+}
+
+p {
+  font-size: 1em;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.featureTile {
+  border: 1px solid #6d3465;
+  padding: 1.5em;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  text-decoration: none !important;
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  text-decoration: none !important;
+}
+
+.featureArrow {
+  color: #6d3465;
+  text-decoration: none !important;
+}
+.featureTile:hover {
+  background-color: #6d3465;
+}
+
+.featureTile:hover .featureTitle,
+.featureTile:hover .featureArrow {
+  color: white;
+}
+
+
+.tileLink, .breadcrumbs {
+  text-decoration: none !important;
+}
+
+.breadcrumbs {
+  font-size: 0.9em;
+  font-weight: 400;
+  margin: 0.3rem 0;
+}
+
+.breadcrumbs a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+
+.highlightText {
+  background-color: yellow
+}
