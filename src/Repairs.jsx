@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Mailer from "./Mailer/Mailer";
+import Prompts from "./Mailer/Prompts";
 
 const Repairs = () => {
   return (
@@ -19,8 +20,7 @@ const Repairs = () => {
       <h1>Get help with repairs</h1>
 
 
-      <Mailer />
-    </div>
+<Prompts/>    </div>
   );
 };
 
