@@ -93,9 +93,6 @@ const FetchTarget = ({
 
   return (
     <>
-      <div className="promptQ">
-        Enter your postcode to find your representatives: *
-      </div>
       <TextField
         id="postcode"
         label="Postcode"
