@@ -13,7 +13,10 @@ export const BtnStyle = {
     backgroundColor: " #6d3465",
     color: "white",
   },
-  "&:disabled": { backgroundColor: "rgb(219, 219, 219)", color: "rgb(174, 174, 174)" },
+  "&:disabled": {
+    backgroundColor: "rgb(219, 219, 219)",
+    color: "rgb(174, 174, 174)",
+  },
 };
 
 export const BtnStyleDisabled = {
@@ -23,8 +26,8 @@ export const BtnStyleDisabled = {
   borderRadius: "0px",
   padding: "8px 8px 4px 8px",
   color: "black",
-backgroundColor: "rgb(219, 219, 219)",
- color: "rgb(174, 174, 174)"
+  backgroundColor: "rgb(219, 219, 219)",
+  color: "rgb(174, 174, 174)",
 };
 
 export const BtnStyleSmall = {
@@ -97,14 +100,7 @@ export const BtnStyleTiny = {
 };
 
 export const CheckBoxStyle = {
-  color: "var(--button-color)", // Default color for the checkbox
-  "&.Mui-checked": {
-    color: "var(--button-color)", // Color when the checkbox is checked
-  },
-  "&:hover": {
-    backgroundColor: "var(--secondary-color)",
-    color: "var(--button-color)",
-  },
+  color: "#6d3465", 
 };
 
 export const TextFieldStyle = {
