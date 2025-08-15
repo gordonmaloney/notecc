@@ -16,6 +16,17 @@ export const BtnStyle = {
   "&:disabled": { backgroundColor: "rgb(219, 219, 219)", color: "rgb(174, 174, 174)" },
 };
 
+export const BtnStyleDisabled = {
+  fontSize: "large",
+  textTransform: "none",
+  //fontWeight: "800",
+  borderRadius: "0px",
+  padding: "8px 8px 4px 8px",
+  color: "black",
+backgroundColor: "rgb(219, 219, 219)",
+ color: "rgb(174, 174, 174)"
+};
+
 export const BtnStyleSmall = {
   fontSize: "medium",
   textTransform: "none",

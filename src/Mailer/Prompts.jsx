@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Mailer from "./Mailer";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Tooltip } from "@mui/material";
 import FetchTarget from "./FetchTarget";
 import EmailInput from "./ClientHandling/EmailInput";
-import { BtnStyle, TextFieldStyle } from "../MUIStyles";
+import { BtnStyle, TextFieldStyle, BtnStyleDisabled } from "../MUIStyles";
 
 const Prompts = ({ issue, blankTemplate }) => {
   const [stage, setStage] = useState("prompts");
@@ -37,6 +37,21 @@ const Prompts = ({ issue, blankTemplate }) => {
   useEffect(() => {
     handlePrompts();
   }, [userStory, userName, postcode, userEmail]);
+
+  const fieldsIncomplete =
+    userName === "" || userStory === "" || userEmail === "" || postcode === "";
+
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const handleButtonClick = () => {
+    console.log("test");
+    if (fieldsIncomplete) {
+      setTooltipOpen(true);
+      // Automatically close tooltip after 3 seconds
+      setTimeout(() => {
+        setTooltipOpen(false);
+      }, 3000);
+    }
+  };
 
   if (stage == "prompts") {
     return (
@@ -72,21 +87,35 @@ const Prompts = ({ issue, blankTemplate }) => {
           setEmailClient={setEmailClient}
         />
 
-        <Button
-          sx={{ ...BtnStyle, float: "right" }}
-          disabled={
-            userName == "" ||
-            userStory == "" ||
-            userEmail == "" ||
-            postcode == ""
-          }
-          onClick={() => {
-            handlePrompts();
-            setStage("message");
-          }}
+        <Tooltip
+          title="Make sure you have filled out all the questions above"
+          open={tooltipOpen}
+          disableHoverListener
+          disableFocusListener
+          disableTouchListener
+          placement="left"
         >
-          Next
-        </Button>
+          <span style={{ float: "right" }}>
+            <Button
+              sx={fieldsIncomplete ? BtnStyleDisabled : BtnStyle}
+              onClick={() => {
+                if (
+                  userName !== "" &&
+                  userStory !== "" &&
+                  userEmail !== "" &&
+                  postcode !== ""
+                ) {
+                  handlePrompts();
+                  setStage("message");
+                } else {
+                  handleButtonClick();
+                }
+              }}
+            >
+              Next
+            </Button>
+          </span>
+        </Tooltip>
       </div>
     );
   }

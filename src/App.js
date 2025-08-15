@@ -9,10 +9,11 @@ import {
 } from "react-router-dom";
 import Report from "./Report";
 import Repairs from "./Repairs";
+import Footer from "./Footer";
 
 const App = () => {
   return (
-    <div>
+    <div className="page">
       <Router>
         <Header />
         <Routes>
@@ -21,6 +22,8 @@ const App = () => {
           <Route path="/report" element={<Report />} />
           <Route path="/repairs" element={<Repairs />} />
         </Routes>
+
+        <Footer />
       </Router>
     </div>
   );

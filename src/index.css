@@ -9,6 +9,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.page {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+}
+
+main {
+  flex: 1; /* Take up remaining space */
+}
+
 html {
   font: 1em / 1.5 "Roboto", sans-serif;
 }
@@ -83,7 +99,7 @@ p {
 }
 
 .editableDivBox {
-  outline: 1px solid rgba(0, 0, 0, 0.3)
+  outline: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .editableDivBox:focus-within {
@@ -92,6 +108,13 @@ p {
 }
 
 .editableDivBox:focus-within .editableDivBoxLabel {
-  color: black !important;    
-  font-weight: 400 !important 
+  color: black !important;
+  font-weight: 400 !important;
+}
+
+.footer {
+  height: 50px;
+  margin-top: 10px;
+  padding: 10px 30px;
+  border-top: 2px solid lightgrey;
 }

@@ -11,28 +11,31 @@ const Mailer = ({
   noClient,
   setNoClient,
   emailClient,
-  setStage
+  setStage,
 }) => {
   const [sent, setSent] = useState(false);
 
   const Mobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
+  let SL = "Requesting support with my housing issue";
+
+  let title = "Demand Edinburgh Council stand up for tenants";
+
+  let bcc = "edinburgh@livingrent.org";
+
+
+
   //TO DO:
 
   const [messaging, setMessaging] = useState([]);
 
-  let SL = "test";
-  let bcc = "test";
   let copyIn = true;
-  let title = "test";
 
+
+  
   if (template.includes("<<|")) {
     return <>Loading...</>;
   }
-
-
-  let promptsChanged = answers
-
 
   return (
     <div>
@@ -41,7 +44,7 @@ const Mailer = ({
         body={template}
         substrings={answers}
         onBodyChange={(e) => setTemplate(e)}
-        promptsChanged={promptsChanged}
+        promptsChanged={answers}
       />
 
       <Button sx={BtnStyle} onClick={() => setStage("prompts")}>
