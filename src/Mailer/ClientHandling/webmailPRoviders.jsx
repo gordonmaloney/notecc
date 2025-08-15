@@ -2,7 +2,7 @@
 
 export const webmailProviders = [
   {
-    name: "gmail",
+    name: "Gmail",
     domains: ["gmail.com", "googlemail.com"],
     mxHint: "google.com",
     composeUrl: (to, subject, body, bcc) => {
@@ -14,7 +14,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "outlook",
+    name: "Outlook",
     domains: ["outlook.com", "hotmail.com", "live.com"],
     mxHint: "outlook.com",
     composeUrl: (to, subject, body, bcc) => {
@@ -28,7 +28,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "yahoo",
+    name: "Yahoo",
     domains: ["yahoo.com", "ymail.com"],
     mxHint: "yahoodns.net",
     composeUrl: (to, subject, body, bcc) => {
@@ -42,7 +42,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "aol",
+    name: "AOL",
     domains: ["aol.com"],
     mxHint: "aol.com",
     composeUrl: (to, subject, body, bcc) => {
@@ -56,7 +56,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "icloud",
+    name: "iCloud",
     domains: ["icloud.com", "me.com", "mac.com"],
     mxHint: "icloud.com",
     composeUrl: (to, subject, body, bcc) => {
@@ -70,7 +70,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "zoho",
+    name: "Zoho",
     domains: ["zoho.com"],
     mxHint: "zoho.com",
     composeUrl: (to, subject, body, bcc) => {
@@ -84,7 +84,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "protonmail",
+    name: "Protonmail",
     domains: ["protonmail.com"],
     mxHint: "protonmail.ch",
     composeUrl: (to, subject, body, bcc) => {
@@ -98,7 +98,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "gmx",
+    name: "GMX",
     domains: ["gmx.com", "gmx.co.uk"],
     mxHint: "gmx.net",
     composeUrl: (to, subject, body, bcc) => {
@@ -112,7 +112,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "yandex",
+    name: "Yandex",
     domains: ["yandex.com", "yandex.ru"],
     mxHint: "yandex.net",
     composeUrl: (to, subject, body, bcc) => {
@@ -126,7 +126,7 @@ export const webmailProviders = [
     },
   },
   {
-    name: "fastmail",
+    name: "Fastmail",
     domains: ["fastmail.com"],
     mxHint: "fastmail.com",
     composeUrl: (to, subject, body, bcc) => {

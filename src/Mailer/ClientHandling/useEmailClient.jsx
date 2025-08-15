@@ -14,12 +14,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const defaultProviders = [
   {
-    name: "gmail",
+    name: "Gmail",
     domains: ["gmail.com", "googlemail.com"],
     mxHint: "google.com",
   },
   {
-    name: "outlook",
+    name: "Outlook",
     domains: [
       "outlook.com",
       "hotmail.com",
@@ -30,21 +30,21 @@ const defaultProviders = [
     mxHint: "outlook.com",
   },
   {
-    name: "yahoo",
+    name: "Yahoo",
     domains: ["yahoo.com", "ymail.com", "rocketmail.com"],
     mxHint: "yahoodns.net",
   },
   {
-    name: "icloud",
+    name: "iCloud",
     domains: ["icloud.com", "me.com", "mac.com"],
     mxHint: "icloud.com",
   },
   {
-    name: "proton",
+    name: "Proton",
     domains: ["proton.me", "protonmail.com"],
     mxHint: "protonmail",
   },
-  { name: "zoho", domains: ["zoho.com", "zohomail.com"], mxHint: "zoho" },
+  { name: "Zoho", domains: ["zoho.com", "zohomail.com"], mxHint: "zoho" },
 ];
 
 // simple in-module cache for MX lookups

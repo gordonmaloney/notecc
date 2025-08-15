@@ -1,36 +1,34 @@
+import { backdropClasses } from "@mui/material";
+
 export const BtnStyle = {
   fontSize: "large",
-  //textTransform: "none",
-  fontWeight: "800",
-  borderRadius: "10px",
+  textTransform: "none",
+  //fontWeight: "800",
+  borderRadius: "0px",
   padding: "8px 8px 4px 8px",
-  color: "var(--secondary-color)",
-  backgroundColor: "var(--button-color)",
-  border: "1px solid var(--button-color)",
+  color: "black",
+  backgroundColor: "white",
+  border: "1px solid #6d3465",
   "&:hover, &:active": {
-    backgroundColor: "var(--secondary-color)",
-    color: "var(--button-color)",
+    backgroundColor: " #6d3465",
+    color: "white",
   },
-  "&:disabled": { color: "red" },
+  "&:disabled": { backgroundColor: "rgb(219, 219, 219)", color: "rgb(174, 174, 174)" },
 };
 
 export const BtnStyleSmall = {
   fontSize: "medium",
-  //textTransform: "none",
-  fontWeight: "600",
-  borderRadius: "10px",
-  padding: "6px 6px 3px 6px",
-  color: "var(--secondary-color)",
-  backgroundColor: "var(--button-color)",
-  border: "1px solid var(--button-color)",
+  textTransform: "none",
+  borderRadius: "0px",
+  padding: "8px 8px 4px 8px",
+  color: "black",
+  backgroundColor: "white",
+  border: "1px solid #6d3465",
   "&:hover, &:active": {
-    backgroundColor: "var(--secondary-color)",
-    color: "var(--button-color)",
+    backgroundColor: " #6d3465",
+    color: "white",
   },
-  "&:disabled": {
-    color: "var(--button-disabled-color)",
-    backgroundColor: "var(--button-disabled-background)",
-  },
+  "&:disabled": { color: "red" },
 };
 
 export const BtnStyleCancel = {
@@ -74,20 +72,17 @@ export const BtnStyleSecondary = {
 
 export const BtnStyleTiny = {
   fontSize: "small",
-  //textTransform: "none",
-  fontWeight: "600",
-  borderRadius: "10px",
-  color: "var(--secondary-color)",
-  backgroundColor: "var(--button-color)",
-  border: "1px solid var(--button-color)",
+  textTransform: "none",
+  borderRadius: "0px",
+  padding: "8px 8px 4px 8px",
+  color: "black",
+  backgroundColor: "white",
+  border: "1px solid #6d3465",
   "&:hover, &:active": {
-    backgroundColor: "var(--secondary-color)",
-    color: "var(--button-color)",
+    backgroundColor: " #6d3465",
+    color: "white",
   },
-  "&:disabled": {
-    color: "var(--button-disabled-color)",
-    backgroundColor: "var(--button-disabled-background)",
-  },
+  "&:disabled": { color: "red" },
 };
 
 export const CheckBoxStyle = {

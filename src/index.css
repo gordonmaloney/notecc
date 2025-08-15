@@ -62,8 +62,8 @@ p {
   color: white;
 }
 
-
-.tileLink, .breadcrumbs {
+.tileLink,
+.breadcrumbs {
   text-decoration: none !important;
 }
 
@@ -78,7 +78,20 @@ p {
   text-decoration: none;
 }
 
-
 .highlightText {
-  background-color: yellow
+  background-color: yellow;
+}
+
+.editableDivBox {
+  outline: 1px solid rgba(0, 0, 0, 0.3)
+}
+
+.editableDivBox:focus-within {
+  box-sizing: border-box;
+  outline: 2px solid rgba(0, 0, 0, 1);
+}
+
+.editableDivBox:focus-within .editableDivBoxLabel {
+  color: black !important;    
+  font-weight: 400 !important 
 }

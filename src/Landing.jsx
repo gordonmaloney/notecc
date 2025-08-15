@@ -1,13 +1,15 @@
 import React from "react";
 import FeatureTile from "./FeatureTile";
 import Grid from "@mui/material/Grid";
+import { Button } from "@mui/material";
+import { BtnStyle } from "./MUIStyles";
 
 const Landing = () => {
   return (
     <div
       style={{
         padding: "0 50px 20px 50px",
-        width: "70%",
+        width: "80%",
       }}
     >
       <h1>Rogue landlord portal</h1>
@@ -46,14 +48,16 @@ const Landing = () => {
         the code. You know how to get in touch.
       </p>
 
+
+
       <Grid container spacing={2} justifyContent={"center"}>
-        <Grid item size={{ xs: 12, sm: 6 }}>
+        <Grid item size={{ xs: 12, lg: 6 }}>
           <FeatureTile title="Get help with repairs" link="repairs" />
         </Grid>
-        <Grid item size={{ xs: 12, sm: 6 }}>
+        <Grid item size={{ xs: 12, lg: 6 }}>
           <FeatureTile title="Report your rogue landlord" link="report" />
         </Grid>
-        <Grid item size={{ xs: 12, sm: 6 }}>
+        <Grid item size={{ xs: 12, lg: 6 }}>
           <FeatureTile
             title="Join Living Rent"
             link="https://www.livingrent.org/join"

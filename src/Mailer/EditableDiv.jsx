@@ -50,7 +50,6 @@ const EditableDiv = ({
       <div
         style={{
           marginTop: "10px",
-          border: "1px solid rgba(0, 0, 0, 0.3)",
           padding: "10px",
           position: "relative",
           borderRadius: "4px",
@@ -61,17 +60,16 @@ const EditableDiv = ({
         <label
           htmlFor="editableDiv"
           style={{
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-
             position: "absolute",
             top: "-9px",
             left: "8px",
             fontSize: "0.78rem",
             fontWeight: "320",
-            color: "rgba(0,0,0,0.6)",
-            backgroundColor: "rgba(246, 243, 246, 1)",
+            color: "rgb(80,80,80)",
+            backgroundColor: "white",
             padding: "0 5px",
           }}
+          className="editableDivBoxLabel"
         >
           {label}
         </label>

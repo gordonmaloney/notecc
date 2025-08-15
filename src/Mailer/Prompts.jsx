@@ -3,7 +3,7 @@ import Mailer from "./Mailer";
 import { Button, TextField } from "@mui/material";
 import FetchTarget from "./FetchTarget";
 import EmailInput from "./ClientHandling/EmailInput";
-import { TextFieldStyle } from "../MUIStyles";
+import { BtnStyle, TextFieldStyle } from "../MUIStyles";
 
 const Prompts = ({ issue, blankTemplate }) => {
   const [stage, setStage] = useState("prompts");
@@ -68,7 +68,19 @@ const Prompts = ({ issue, blankTemplate }) => {
           emailClient={emailClient}
           setEmailClient={setEmailClient}
         />
-        <Button onClick={handlePrompts}>Next</Button>
+
+        <Button
+          sx={BtnStyle}
+          disabled={
+            userName == "" ||
+            userStory == "" ||
+            userEmail == "" ||
+            postcode == ""
+          }
+          onClick={handlePrompts}
+        >
+          Next
+        </Button>
       </div>
     );
   }

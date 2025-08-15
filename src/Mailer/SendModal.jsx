@@ -39,6 +39,7 @@ export const SendModal = ({
   const onClose = () => {
     setIsOpen(false);
     setSent(false);
+    setNoClient(false)
   };
 
   const generateLink = (forceMailto) => {
@@ -89,7 +90,7 @@ export const SendModal = ({
 
   return (
     <>
-      <Button sx={BtnStyleSmall} onClick={() => setIsOpen(true)}>
+      <Button sx={BtnStyle} onClick={() => setIsOpen(true)}>
         Send
       </Button>
 
@@ -169,7 +170,7 @@ export const SendModal = ({
                   onClick={() => {
                     setSent(true);
                   }}
-                  style={{ ...BtnStyle, marginTop: "5px" }}
+                  sx={BtnStyle}
                 >
                   Send{" "}
                   {`email${
@@ -185,7 +186,7 @@ export const SendModal = ({
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setSent(true)}
-                      style={{ ...BtnStyleTiny, marginTop: "5px" }}
+                      sx={{ ...BtnStyleTiny, marginTop: "5px" }}
                     >
                       Send with your email app
                     </Button>

@@ -32,7 +32,7 @@ const Mailer = ({
   return (
     <div>
       <EditableDiv
-        label="test"
+        label="Your message"
         body={template}
         substrings={answers}
         onBodyChange={(e) => setTemplate(e)}
