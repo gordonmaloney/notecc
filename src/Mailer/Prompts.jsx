@@ -132,6 +132,7 @@ const Prompts = ({ issue, blankTemplate }) => {
           emailClient={emailClient}
           issue={issue}
           setStage={setStage}
+          adminDivisions={adminDivisions}
         />
       </div>
     );
