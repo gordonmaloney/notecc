@@ -1,20 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Prompts from "./Mailer/Prompts";
+import Prompts from "../Mailer/Prompts";
+import Breadcrumbs from "../Components/Breadcrumbs";
 
 const Report = () => {
   return (
-    <div
-      style={{
-        padding: "0 50px 20px 50px",
-        width: "70%",
-      }}
-    >
-      <div className="breadcrumbs">
-        <Link to="../">Home</Link>
-        <span style={{ margin: "0 12px" }}>/</span>
-        Report your landlord
-      </div>
+    <div className="subPage">
+      <Breadcrumbs child="Report your landlord" />
 
       <h1>Report your landlord</h1>
 

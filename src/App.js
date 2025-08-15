@@ -1,20 +1,25 @@
 import React from "react";
-import Header from "./Header";
-import Landing from "./Landing";
+import Header from "./Components/Header";
+import Landing from "./Pages/Landing";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link as RouterLink,
 } from "react-router-dom";
-import Report from "./Report";
-import Repairs from "./Repairs";
-import Footer from "./Footer";
+import Report from "./Pages/Report";
+import Repairs from "./Pages/Repairs";
+import Footer from "./Components/Footer";
+import TolerableStandard from "./Pages/TolerableStandard";
+import FPP from "./Pages/FPP";
+import ScrollToTop from "./Components/ScrollToTop";
 
 const App = () => {
   return (
     <div className="page">
       <Router>
+        <ScrollToTop />
+
         <Header />
         <main>
           <Routes>
@@ -22,6 +27,9 @@ const App = () => {
 
             <Route path="/report" element={<Report />} />
             <Route path="/repairs" element={<Repairs />} />
+
+            <Route path="/tolerable" element={<TolerableStandard />} />
+            <Route path="/fpp" element={<FPP />} />
           </Routes>
         </main>
       </Router>

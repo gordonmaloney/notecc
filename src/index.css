@@ -41,6 +41,10 @@ h2 {
   color: #333;
 }
 
+h1 {
+  line-height: 2.7rem;
+}
+
 a {
   color: #6d3465;
 }
@@ -123,14 +127,13 @@ p {
   color: white;
 }
 
-.header {
-  max-width: 100vw;
-  height: 100px;
-  padding: 40px 50px 0 50px;
-  border-bottom: 2px solid lightgrey;
+.landing {
+  width: 80%;
+  max-width: 1000px;
+  padding: 0 50px 20px 50px;
 }
 
-.landing {
+.subPage {
   width: 80%;
   max-width: 1000px;
   padding: 0 50px 20px 50px;
@@ -141,22 +144,217 @@ p {
   width: 400px;
 }
 
+:root {
+  --brand-purple: #6f2c7f; /* tweak to match your palette */
+  --text-on-purple: #fff;
+  --header-h: 100px;
+}
+
+/* Header bar */
+.header {
+  max-width: 100vw;
+  height: 100px;
+  padding: 0 50px 0 50px;
+  border-bottom: 2px solid lightgrey;
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  background-color: white;
+}
+
+/* Menu button block on the right */
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--header-h);
+  padding: 10px 20px;
+  background: var(--brand-purple);
+  color: var(--text-on-purple);
+  border: none;
+  cursor: pointer;
+  outline-offset: 4px;
+  width: 120px;
+}
+
+/* Hamburger / Close icon */
+.menu-toggle .icon {
+  position: relative;
+  width: 22px;
+  height: 16px;
+  display: inline-block;
+}
+.menu-toggle .icon::before,
+.menu-toggle .icon::after,
+.menu-toggle .icon span {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.menu-toggle .icon::before {
+  top: 0;
+}
+.menu-toggle .icon::after {
+  bottom: 0;
+}
+.menu-toggle .icon span {
+  top: 7px;
+} /* middle bar */
+
+/* create the middle bar with a real element so screenreaders ignore it */
+.menu-toggle .icon::before,
+.menu-toggle .icon::after {
+}
+.menu-toggle .label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* turn into an X when open */
+.menu-toggle.open .icon::before {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.open .icon::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.menu-toggle.open .icon span {
+  opacity: 0;
+}
+
+/* Mega dropdown */
+/* replace the old .mega rules with these */
+
+.mega {
+  position: fixed; /* take it out of document flow */
+  top: var(--header-h); /* sit just under the header */
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: var(--brand-purple);
+  color: var(--text-on-purple);
+
+  /* hide without affecting layout */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  pointer-events: none;
+
+  transition: opacity 0.18s ease, transform 0.18s ease,
+    visibility 0s linear 0.18s;
+}
+
+.mega.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
+}
+
+.mega-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 28px;
+}
+
+.mega-title {
+  margin: 0 0 16px;
+  color: white;
+  font-size: 20px;
+  padding: 10px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cols ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cols li {
+  margin: 10px 0;
+}
+.cols a {
+  color: var(--text-on-purple);
+  text-decoration: none;
+}
+.cols a:hover,
+.cols a:focus {
+  text-decoration: underline;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .cols {
+    grid-template-columns: 1fr;
+  }
+  .mega-inner {
+    padding: 18px 14px 22px;
+  }
+}
+
 @media (max-width: 600px) {
   .header {
-    padding: 10px auto 0 auto;
+    padding-left: 10px;
+    padding-right: 0;
+    height: 80px;
   }
 
   .landing {
     padding: 5px auto;
-    width: 75vw
+    width: 75vw;
   }
 
   .logo {
     width: 70vw;
-    margin: 0 auto
+    margin: 0;
   }
 
   .featureTile {
-    width: 200px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .label {
+    display: none;
+    width: 0px;
+  }
+
+  .menu-toggle {
+    width: 60px !important;
+    height: 80px;
+    padding: 10px auto !important;
+    margin-right: 0;
+  }
+
+  .mega {
+    top: 80px;
+  }
+
+  .landing {
+    width: 94%;
+    max-width: 1000px;
+    padding: 0 3% 20px 3%;
+  }
+
+  .subPage {
+    width: 94%;
+    max-width: 1000px;
+    padding: 0 3% 20px 3%;
   }
 }

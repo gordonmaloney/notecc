@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Mailer from "./Mailer/Mailer";
-import Prompts from "./Mailer/Prompts";
+import Mailer from "../Mailer/Mailer";
+import Prompts from "../Mailer/Prompts";
+import Breadcrumbs from "../Components/Breadcrumbs";
 
 const Repairs = () => {
+
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   return (
-    <div
-      style={{
-        padding: "0 50px 20px 50px",
-        width: "70%",
-      }}
-    >
-      <div className="breadcrumbs">
-        <Link to="../">Home</Link>
-        <span style={{ margin: "0 12px" }}>/</span>
-        Get help with repairs{" "}
-      </div>
+    <div className="subPage">
+      <Breadcrumbs child="Get help with repairs" />
+
       <h1>Get help with repairs</h1>
 
       <p>

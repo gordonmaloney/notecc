@@ -1,8 +1,9 @@
 import React from "react";
-import FeatureTile from "./FeatureTile";
+import FeatureTile from "../Components/FeatureTile";
 import Grid from "@mui/material/Grid";
 import { Button } from "@mui/material";
-import { BtnStyle } from "./MUIStyles";
+import { BtnStyle } from "../MUIStyles";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -12,20 +13,9 @@ const Landing = () => {
         Edinburgh City Council has a series of legal responsibilities to enforce
         good practice in the Private Rented Sector, that they are routinely not
         fulfilling. They must ensure your home meets the{" "}
-        <a
-          href="https://scotland.shelter.org.uk/professional_resources/legal/housing_conditions/the_tolerable_standard"
-          target="_blank"
-        >
-          Tolerable Standard
-        </a>
-        , and they must ensure that landlords pass the{" "}
-        <a
-          href="https://www.gov.scot/publications/landlord-registration-statutory-guidance-local-authorities-2017-statutory-guidance-local/pages/5/"
-          target="_blank"
-        >
-          'Fit and Proper Person' test
-        </a>
-        . However,{" "}
+        <Link to="./tolerable">Tolerable Standard</Link>, and they must ensure
+        that landlords pass the{" "}
+        <Link to="./fpp"> 'Fit and Proper Person' test</Link>. However,{" "}
         <strong>
           getting help from the Council couldn't be more difficult.
         </strong>
