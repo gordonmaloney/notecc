@@ -39,9 +39,12 @@ const Prompts = ({ issue, blankTemplate }) => {
   }, [userStory, userName, postcode, userEmail]);
 
   const fieldsIncomplete =
-    userName === "" || userStory === "" || userEmail === "" || postcode === "";
+    userName === "" || userStory === "" || userEmail === "" || postcode === "" || adminDivisions.ward == undefined;
+
 
   const [tooltipOpen, setTooltipOpen] = useState(false);
+
+
   const handleButtonClick = () => {
     console.log("test");
     if (fieldsIncomplete) {
@@ -52,6 +55,7 @@ const Prompts = ({ issue, blankTemplate }) => {
       }, 3000);
     }
   };
+
 
   if (stage == "prompts") {
     return (
@@ -99,12 +103,7 @@ const Prompts = ({ issue, blankTemplate }) => {
             <Button
               sx={fieldsIncomplete ? BtnStyleDisabled : BtnStyle}
               onClick={() => {
-                if (
-                  userName !== "" &&
-                  userStory !== "" &&
-                  userEmail !== "" &&
-                  postcode !== ""
-                ) {
+                if (!fieldsIncomplete) {
                   handlePrompts();
                   setStage("message");
                 } else {

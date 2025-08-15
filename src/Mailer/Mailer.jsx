@@ -44,7 +44,6 @@ const Mailer = ({
   const [messaging, setMessaging] = useState([]);
   const [notMessaging, setNotMessaging] = useState([]);
 
-  
   useEffect(() => {
     setLoading(true);
     let cancelled = false;
@@ -58,7 +57,10 @@ const Mailer = ({
       })
       .then((data) => {
         setMessaging([
-          { name: "PRS Enforcement team", email: "enforcement@edinburgh.gov" },
+          {
+            name: "PRS Enforcement team",
+            email: "prsenforcement@edinburgh.gov.uk",
+          },
           ...data.filter((c) => c.ward == adminDivisions.ward),
         ]);
         setLoading(false);
@@ -119,6 +121,7 @@ const Mailer = ({
         >
           {messaging.map((msp) => (
             <Chip
+              key={msp.name}
               label={`${msp.name} ${msp.party ? `- ${msp.party}` : ""}`}
               variant="outlined"
               sx={{ margin: "2px" }}
@@ -194,6 +197,7 @@ const Mailer = ({
                   <br />
                   {notMessaging.map((msp) => (
                     <Chip
+                      key={msp.name}
                       size="small"
                       label={`${msp.name} ${msp.party ? `- ${msp.party}` : ""}`}
                       variant="outlined"

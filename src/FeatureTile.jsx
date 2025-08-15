@@ -6,7 +6,7 @@ const FeatureTile = ({ title, link }) => {
   return (
     <Link
       to={link}
-      target={link.includes("http") && "_blank"}
+      target={link.includes("http") ? "_blank" : ""}
       className="tileLink"
     >
       <div className="featureTile">

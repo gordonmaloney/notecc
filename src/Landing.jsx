@@ -6,13 +6,7 @@ import { BtnStyle } from "./MUIStyles";
 
 const Landing = () => {
   return (
-    <div
-      style={{
-        padding: "0 50px 20px 50px",
-        width: "80%",
-        maxWidth: "1000px"
-      }}
-    >
+    <div className="landing">
       <h1>Tenant Complaints Portal</h1>
       <p>
         Edinburgh City Council has a series of legal responsibilities to enforce
@@ -48,8 +42,6 @@ const Landing = () => {
         this page should be a part of your own website. We'll gladly give you
         the code. You know how to get in touch.
       </p>
-
-
 
       <Grid container spacing={2} justifyContent={"center"}>
         <Grid item size={{ xs: 12, lg: 6 }}>

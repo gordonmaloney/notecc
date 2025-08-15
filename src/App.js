@@ -16,15 +16,16 @@ const App = () => {
     <div className="page">
       <Router>
         <Header />
-        <Routes>
-          <Route path="/" element={<Landing />} />
+        <main>
+          <Routes>
+            <Route path="/" element={<Landing />} />
 
-          <Route path="/report" element={<Report />} />
-          <Route path="/repairs" element={<Repairs />} />
-        </Routes>
-
-        <Footer />
+            <Route path="/report" element={<Report />} />
+            <Route path="/repairs" element={<Repairs />} />
+          </Routes>
+        </main>
       </Router>
+      <Footer />
     </div>
   );
 };
