@@ -10,9 +10,10 @@ const Landing = () => {
       style={{
         padding: "0 50px 20px 50px",
         width: "80%",
+        maxWidth: "1000px"
       }}
     >
-      <h1>Rogue landlord portal</h1>
+      <h1>Tenant Complaints Portal</h1>
       <p>
         Edinburgh City Council has a series of legal responsibilities to enforce
         good practice in the Private Rented Sector, that they are routinely not

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import EditableDiv from "./EditableDiv";
-
+import { Button } from "@mui/material";
 import { SendModal } from "./SendModal";
+import { BtnStyle } from "../MUIStyles";
 
 const Mailer = ({
   template,
@@ -10,7 +11,7 @@ const Mailer = ({
   noClient,
   setNoClient,
   emailClient,
-  issue,
+  setStage
 }) => {
   const [sent, setSent] = useState(false);
 
@@ -29,6 +30,10 @@ const Mailer = ({
     return <>Loading...</>;
   }
 
+
+  let promptsChanged = answers
+
+
   return (
     <div>
       <EditableDiv
@@ -36,8 +41,12 @@ const Mailer = ({
         body={template}
         substrings={answers}
         onBodyChange={(e) => setTemplate(e)}
-        promptsChanged={true}
+        promptsChanged={promptsChanged}
       />
+
+      <Button sx={BtnStyle} onClick={() => setStage("prompts")}>
+        Back
+      </Button>
 
       <SendModal
         noClient={noClient}

@@ -26,14 +26,17 @@ const Prompts = ({ issue, blankTemplate }) => {
 
   const handlePrompts = () => {
     setTemplate(
-      template
+      blankTemplate
         .replace("<<|userStory|>>", userStory)
         .replace("<<|userName|>>", userName)
         .replace("<<|postcode|>>", postcode)
     );
     setAnswers([userName, userStory, postcode]);
-    setStage("message");
   };
+
+  useEffect(() => {
+    handlePrompts();
+  }, [userStory, userName, postcode, userEmail]);
 
   if (stage == "prompts") {
     return (
@@ -70,14 +73,17 @@ const Prompts = ({ issue, blankTemplate }) => {
         />
 
         <Button
-          sx={BtnStyle}
+          sx={{ ...BtnStyle, float: "right" }}
           disabled={
             userName == "" ||
             userStory == "" ||
             userEmail == "" ||
             postcode == ""
           }
-          onClick={handlePrompts}
+          onClick={() => {
+            handlePrompts();
+            setStage("message");
+          }}
         >
           Next
         </Button>
@@ -96,6 +102,7 @@ const Prompts = ({ issue, blankTemplate }) => {
           setNoClient={setNoClient}
           emailClient={emailClient}
           issue={issue}
+          setStage={setStage}
         />
       </div>
     );

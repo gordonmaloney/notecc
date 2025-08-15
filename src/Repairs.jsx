@@ -18,6 +18,18 @@ const Repairs = () => {
       </div>
       <h1>Get help with repairs</h1>
 
+      <p>
+        Despite what they may tell you, the Council has the{" "}
+        <b>legal obligation</b> to ensure that all properties in the city meet
+        the 'Tolerable Standard', and they have a wide range of powers and tools
+        to force landlords to take action.
+        <br />
+        <br />
+        You can use this tool to send an email to the Council's enforcement
+        team, copying in your local councillors, to remind them of those
+        obligations and ask for support.
+      </p>
+
       <Prompts
         issue="repair"
         blankTemplate={`Dear Enforcement Team, and my local councillors,

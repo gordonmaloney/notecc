@@ -45,6 +45,8 @@ const EditableDiv = ({
     setLength(body?.length);
   }, [body]);
 
+
+
   return (
     <div style={{ width: "100%" }}>
       <div

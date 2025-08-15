@@ -90,7 +90,7 @@ export const SendModal = ({
 
   return (
     <>
-      <Button sx={BtnStyle} onClick={() => setIsOpen(true)}>
+      <Button sx={{...BtnStyle, float: 'right'}} onClick={() => setIsOpen(true)}>
         Send
       </Button>
 
