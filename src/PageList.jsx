@@ -18,7 +18,7 @@ export const PageList = [
     path: "/campaign",
     highlight: false,
     feature: true,
-    col: 1,
+    col: 2,
   },
   {
     title: "Join Living Rent",

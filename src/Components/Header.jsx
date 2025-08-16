@@ -69,7 +69,12 @@ const Header = () => {
                   page.col == 1 && (
                     <li>
                       <Link
-                        to={`../${page.path}`}
+                        to={
+                          page.path.includes("http")
+                            ? page.path
+                            : `../${page.path}`
+                        }
+                        target={page.path.includes("http") ? "_blank" : ""}
                         onClick={() => setOpen(false)}
                       >
                         {page.title}
