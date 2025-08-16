@@ -85,6 +85,40 @@ p {
   color: white;
 }
 
+.featureTileReverse {
+  border: 1px solid #6d3465;
+  background-color: #6d3465;
+  color: white;
+  padding: 1.5em;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  max-width: 90%;
+  text-decoration: none !important;
+}
+
+.featureTitleReverse {
+  font-size: 1.25rem;
+  text-decoration: none !important;
+  color: white;
+}
+
+.featureArrowReverse {
+  color: white;
+  text-decoration: none !important;
+}
+.featureTileReverse:hover {
+  background-color: white;
+}
+
+.featureTileReverse:hover .featureTitleReverse,
+.featureTileReverse:hover .featureArrowReverse {
+  color: #6d3465;
+}
+
 .tileLink,
 .breadcrumbs {
   text-decoration: none !important;
@@ -326,6 +360,11 @@ p {
   }
 
   .featureTile {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .featureTileReverse {
     width: 80%;
     margin: 0 auto;
   }

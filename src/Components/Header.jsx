@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../lr-ed-logo.png";
 import { Link } from "react-router-dom";
+import { PageList } from "../PageList";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -63,37 +64,36 @@ const Header = () => {
           <h2 className="mega-title">Tenant Complaints Portal</h2>
           <div className="cols">
             <ul>
-              <li>
-                <Link to="../repairs" onClick={() => setOpen(false)}>
-                  Get help with repairs
-                </Link>
-              </li>
-              <li>
-                <Link to="../report" onClick={() => setOpen(false)}>
-                  Report your landlord
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="https://www.livingrent.org/join"
-                  target="_blank"
-                  onClick={() => setOpen(false)}
-                >
-                  Join Living Rent
-                </a>
-              </li>
+              {PageList.map((page) => {
+                return (
+                  page.col == 1 && (
+                    <li>
+                      <Link
+                        to={`../${page.path}`}
+                        onClick={() => setOpen(false)}
+                      >
+                        {page.title}
+                      </Link>
+                    </li>
+                  )
+                );
+              })}
             </ul>
             <ul>
-              <li>
-                <Link to="../tolerable" onClick={() => setOpen(false)}>
-                  The Tolerable Standard
-                </Link>
-              </li>
-              <li>
-                <Link to="../fpp" onClick={() => setOpen(false)}>
-                  The 'Fit and Proper Person' Test
-                </Link>
-              </li>
+              {PageList.map((page) => {
+                return (
+                  page.col == 2 && (
+                    <li>
+                      <Link
+                        to={`../${page.path}`}
+                        onClick={() => setOpen(false)}
+                      >
+                        {page.title}
+                      </Link>
+                    </li>
+                  )
+                );
+              })}
             </ul>
           </div>
         </div>

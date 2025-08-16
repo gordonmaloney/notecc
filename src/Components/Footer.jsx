@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer">
       This tool was created by Living Rent, because the City of Edinburgh
-      Council refuse to.
+      Council refuse to do it.
       <br />
       <br />
       Despite having a wealth of powers and even legal obligations to help

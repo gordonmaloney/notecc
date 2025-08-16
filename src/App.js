@@ -13,6 +13,8 @@ import Footer from "./Components/Footer";
 import TolerableStandard from "./Pages/TolerableStandard";
 import FPP from "./Pages/FPP";
 import ScrollToTop from "./Components/ScrollToTop";
+import TheCampaign from "./Pages/TheCampaign";
+import Powers from "./Pages/Powers";
 
 const App = () => {
   return (
@@ -30,6 +32,9 @@ const App = () => {
 
             <Route path="/tolerable" element={<TolerableStandard />} />
             <Route path="/fpp" element={<FPP />} />
+
+            <Route path="/campaign" element={<TheCampaign />} />
+            <Route path="/powers" element={<Powers />} />
           </Routes>
         </main>
       </Router>

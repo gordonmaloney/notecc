@@ -1,9 +1,10 @@
 import React from "react";
-import FeatureTile from "../Components/FeatureTile";
+import { FeatureTile, FeatureTileReverse } from "../Components/FeatureTile";
 import Grid from "@mui/material/Grid";
 import { Button } from "@mui/material";
 import { BtnStyle } from "../MUIStyles";
 import { Link } from "react-router-dom";
+import { PageList } from "../PageList";
 
 const Landing = () => {
   return (
@@ -34,18 +35,19 @@ const Landing = () => {
       </p>
 
       <Grid container spacing={2} justifyContent={"center"}>
-        <Grid item size={{ xs: 12, lg: 6 }}>
-          <FeatureTile title="Get help with repairs" link="repairs" />
-        </Grid>
-        <Grid item size={{ xs: 12, lg: 6 }}>
-          <FeatureTile title="Report your rogue landlord" link="report" />
-        </Grid>
-        <Grid item size={{ xs: 12, lg: 6 }}>
-          <FeatureTile
-            title="Join Living Rent"
-            link="https://www.livingrent.org/join"
-          />
-        </Grid>
+        {PageList.map((page) => {
+          return !page.feature ? (
+            <></>
+          ) : page.highlight ? (
+            <Grid item size={{ xs: 12, lg: 6 }}>
+              <FeatureTileReverse title={page.title} link={page.path} />
+            </Grid>
+          ) : (
+            <Grid item size={{ xs: 12, lg: 6 }}>
+              <FeatureTile title={page.title} link={page.path} />
+            </Grid>
+          );
+        })}
       </Grid>
     </div>
   );
