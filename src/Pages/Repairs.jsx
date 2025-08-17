@@ -5,8 +5,6 @@ import Prompts from "../Mailer/Prompts";
 import Breadcrumbs from "../Components/Breadcrumbs";
 
 const Repairs = () => {
-
-
   return (
     <div className="subPage">
       <Breadcrumbs child="Get help with repairs" />
@@ -32,6 +30,8 @@ const Repairs = () => {
 I am writing to ask for your help.
 
 <<|userStory|>>
+
+<<|StandardsNotMet|>>
 
 I am aware that I could take this matter to the Tribunal myself, but I am writing to you because I note that section 85(1) of The Housing (Scotland) Act 1987 states that: “It shall be the duty of every local authority to secure that all houses in their district which do not meet the tolerable standard are closed, demolished or brought up to the tolerable standard within such period as is reasonable in all the circumstances.”
 

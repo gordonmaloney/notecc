@@ -22,7 +22,7 @@ const Report = () => {
       </p>
 
       <Prompts
-        issue="repair"
+        issue="report"
         blankTemplate={`Dear Enforcement Team, and my local councillors,
 
 I am writing to ask for your help.

@@ -67,7 +67,7 @@ const Header = () => {
               {PageList.map((page) => {
                 return (
                   page.col == 1 && (
-                    <li>
+                    <li key={page.title}>
                       <Link
                         to={
                           page.path.includes("http")
@@ -88,7 +88,7 @@ const Header = () => {
               {PageList.map((page) => {
                 return (
                   page.col == 2 && (
-                    <li>
+                    <li key={page.title}>
                       <Link
                         to={`../${page.path}`}
                         onClick={() => setOpen(false)}

@@ -15,6 +15,7 @@ import { SendModal } from "./SendModal";
 import { BtnStyle, CheckBoxStyle, TextFieldStyle } from "../MUIStyles";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ScrollToTop from "../Components/ScrollToTop";
 
 const Mailer = ({
   template,
@@ -25,6 +26,7 @@ const Mailer = ({
   emailClient,
   setStage,
   adminDivisions,
+  standardsNotMet,
 }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -81,6 +83,7 @@ const Mailer = ({
 
   return (
     <div>
+      <ScrollToTop />
       <Box
         sx={{
           position: "relative",
