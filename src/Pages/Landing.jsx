@@ -10,7 +10,8 @@ const Landing = () => {
   return (
     <div className="landing">
       <h1>Tenant Complaints Portal</h1>
-      <p>
+
+           <p>
         Edinburgh City Council has a series of legal responsibilities to enforce
         good practice in the Private Rented Sector, that they are routinely not
         fulfilling. They must ensure your home meets the{" "}

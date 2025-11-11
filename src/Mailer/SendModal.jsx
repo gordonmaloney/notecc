@@ -4,6 +4,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { BtnStyle, BtnStyleSmall, BtnStyleTiny } from "../MUIStyles";
 import { webmailProviders } from "./ClientHandling/webmailProviders";
 import { Stack } from "@mui/material";
+import { submitter } from "../submitter";
+
 
 const ModalStyle = {
   position: "absolute",
@@ -17,7 +19,7 @@ const ModalStyle = {
   padding: "15px",
   backgroundColor: "#F6F3F6",
   borderRadius: "0",
-  border: '1px solid black',
+  border: "1px solid black",
   backdropFilter: "blur(5px)",
 };
 
@@ -34,12 +36,13 @@ export const SendModal = ({
   sent,
   copyIn,
   emailClient,
+  contactDetails,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => {
     setIsOpen(false);
     setSent(false);
-    setNoClient(false)
+    setNoClient(false);
   };
 
   const generateLink = (forceMailto) => {
@@ -88,9 +91,25 @@ export const SendModal = ({
     }
   };
 
+  const handleSendButton = () => {
+    setIsOpen(true);
+
+    copyIn &&
+      submitter({
+        type: "submission",
+        site: "portal",
+        campaignId: "Tenant Complaints Portal",
+        contactDeets: contactDetails,
+        testimonial: body,
+      });
+  };
+
   return (
     <>
-      <Button sx={{...BtnStyle, float: 'right'}} onClick={() => setIsOpen(true)}>
+      <Button
+        sx={{ ...BtnStyle, float: "right" }}
+        onClick={() => handleSendButton()}
+      >
         Send
       </Button>
 

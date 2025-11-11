@@ -27,6 +27,7 @@ const Mailer = ({
   setStage,
   adminDivisions,
   standardsNotMet,
+  contactDetails,
 }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -294,6 +295,7 @@ const Mailer = ({
         setSent={setSent}
         copyIn={copyIn}
         emailClient={emailClient}
+        contactDetails={contactDetails}
       />
     </div>
   );

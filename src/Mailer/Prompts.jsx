@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo, useLayoutEffect } from "react";
+import React, { useState, useCallback, memo, useLayoutEffect, useEffect } from "react";
 import Mailer from "./Mailer";
 import {
   Button,
@@ -152,6 +152,8 @@ const Prompts = ({ issue, blankTemplate }) => {
   // user inputs
   const [userName, setUserName] = useState("");
   const [userStory, setUserStory] = useState("");
+  const [userNumber, setUserNumber] = useState("");
+  const [contactDetails, setContactDetails] = useState({});
 
   // tolerable standard selections
   const [standardsNotMet, setStandardsNotMet] = useState([]);
@@ -201,6 +203,14 @@ const Prompts = ({ issue, blankTemplate }) => {
 
   // ensure initial render does not jank inputs (optional micro-optim)
   useLayoutEffect(() => {}, []);
+
+  useEffect(() => {
+    setContactDetails({
+      name: userName,
+      number: userNumber,
+      email: userEmail,
+    });
+  }, [userName, userNumber, userEmail]);
 
   if (stage === "prompts") {
     return (
@@ -257,6 +267,15 @@ const Prompts = ({ issue, blankTemplate }) => {
           setEmailClient={setEmailClient}
         />
 
+        <TextField
+          label="Your number"
+          variant="outlined"
+          value={userNumber}
+          sx={TextFieldStyle}
+          onChange={(e) => setUserNumber(e.target.value)}
+          fullWidth
+        />
+
         <Tooltip
           title="Make sure you have filled out all the questions above"
           open={tooltipOpen}
@@ -299,6 +318,7 @@ const Prompts = ({ issue, blankTemplate }) => {
           issue={issue}
           setStage={setStage}
           adminDivisions={adminDivisions}
+          contactDetails={contactDetails}
         />
       </div>
     );
