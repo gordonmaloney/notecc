@@ -17,9 +17,6 @@ import TheCampaign from "./Pages/TheCampaign";
 import Powers from "./Pages/Powers";
 
 const App = () => {
-
-
-  
   return (
     <div className="page">
       <Router>
@@ -27,6 +24,7 @@ const App = () => {
 
         <Header />
         <main>
+       
           <Routes>
             <Route path="/" element={<Landing />} />
 

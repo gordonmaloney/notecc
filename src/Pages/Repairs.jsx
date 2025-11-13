@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import Mailer from "../Mailer/Mailer";
 import Prompts from "../Mailer/Prompts";
 import Breadcrumbs from "../Components/Breadcrumbs";
+import { tracker } from "../tracker";
 
 const Repairs = () => {
+
+  tracker({
+    type: "page_view",
+    campaignId: "Tenant Complaints Portal",
+  });
+  
   return (
     <div className="subPage">
       <Breadcrumbs child="Get help with repairs" />

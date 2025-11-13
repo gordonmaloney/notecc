@@ -1,6 +1,8 @@
 import React from "react";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import { Link } from "react-router-dom";
+import HardwareIcon from "@mui/icons-material/Hardware";
+import NoAccountsIcon from "@mui/icons-material/NoAccounts";
 
 export const FeatureTile = ({ title, link }) => {
   return (
@@ -30,8 +32,16 @@ export const FeatureTile = ({ title, link }) => {
   );
 };
 
-
 export const FeatureTileReverse = ({ title, link }) => {
+  const customSx = {
+    fontSize: "3.5em",
+    fontWeight: "300",
+    lineHeight: "2em",
+    margin: "0px",
+    padding: "0px",
+    float: "right",
+  };
+
   return (
     <Link
       to={link}
@@ -43,17 +53,18 @@ export const FeatureTileReverse = ({ title, link }) => {
           {title}
         </h2>
 
-        <ArrowForwardIosRoundedIcon
-          className="featureArrowReverse"
-          sx={{
-            fontSize: "3.5em",
-            fontWeight: "300",
-            lineHeight: "2em",
-            margin: "0px",
-            padding: "0px",
-            float: "right",
-          }}
-        />
+        {title == "Get help with repairs" ? (
+          <>
+            <HardwareIcon className="featureArrowReverse" sx={customSx} />
+          </>
+        ) : title == "Report your rogue landlord" ? (
+          <NoAccountsIcon className="featureArrowReverse" sx={customSx} />
+        ) : (
+          <ArrowForwardIosRoundedIcon
+            className="featureArrowReverse"
+            sx={customSx}
+          />
+        )}
       </div>
     </Link>
   );

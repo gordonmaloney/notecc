@@ -10,6 +10,11 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
+  FormControl,
+  FormGroup,
+  FormLabel,
+  RadioGroup,
+  Radio,
 } from "@mui/material";
 import { SendModal } from "./SendModal";
 import { BtnStyle, CheckBoxStyle, TextFieldStyle } from "../MUIStyles";
@@ -31,6 +36,7 @@ const Mailer = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [gdprPrompt, setGdprPrompt] = useState(false);
 
   const [sent, setSent] = useState(false);
 
@@ -42,7 +48,8 @@ const Mailer = ({
 
   let bcc = "edinburgh@livingrent.org";
 
-  const [copyIn, setCopyIn] = useState(false);
+  const [copyIn, setCopyIn] = useState(true);
+  const [optIn, setOptIn] = useState(undefined);
 
   const [messaging, setMessaging] = useState([]);
   const [notMessaging, setNotMessaging] = useState([]);
@@ -82,9 +89,19 @@ const Mailer = ({
     return <>Loading...</>;
   }
 
+  const handleUnBcc = () => {
+    setCopyIn(false);
+  };
+
+  const handleSendClicked = () => {
+    setGdprPrompt(true);
+  };
+
   return (
     <div>
       <ScrollToTop />
+
+      {/* Messaging */}
       <Box
         sx={{
           position: "relative",
@@ -234,6 +251,73 @@ const Mailer = ({
         )}
       </Box>
 
+      {/* BCCing */}
+      <Box
+        sx={{
+          position: "relative",
+          marginTop: 2,
+          marginBottom: "14px",
+
+          width: "100%",
+          "&:focus-within .paperBorder": {
+            outline: "2px solid #3f51b5", // Color for focus state
+            outlineOffset: "-2px",
+          },
+        }}
+      >
+        <label
+          style={{
+            position: "absolute",
+            top: "-9px",
+            left: "8px",
+            fontSize: "0.78rem",
+            fontWeight: "320",
+            color: "rgba(0,0,0,0.3)",
+            backgroundColor: "white",
+            padding: "0 5px",
+            transition: "top 0.2s, font-size 0.2s, color 0.2s",
+          }}
+        >
+          BCC
+        </label>
+
+        <Paper
+          sx={{
+            ...TextFieldStyle,
+            margin: "1px 0 7px 0",
+            padding: "5px",
+            paddingY: "15px",
+            border: "1px solid lightgray",
+          }}
+        >
+          {copyIn ? (
+            <Chip
+              key={"livingrent"}
+              label={`Living Rent`}
+              variant="outlined"
+              sx={{ margin: "2px" }}
+              onClick={() => {
+                handleUnBcc();
+              }}
+              onDelete={() => {
+                handleUnBcc();
+              }}
+            />
+          ) : (
+            <span
+            style={{marginLeft: "10px", fontStyle: "italic"}}
+            >
+              Are you sure? By copying Living Rent in, your story can help shape our campaign.{" "}
+              <span onClick={() => setCopyIn(true)}
+                style={{cursor: "pointer"}}
+                >
+                <u>Add Living Rent back into BCC.</u>
+              </span>
+            </span>
+          )}
+        </Paper>
+      </Box>
+
       <EditableDiv
         label="Your message"
         body={template}
@@ -251,32 +335,63 @@ const Mailer = ({
         </em>
       </div>
 
-      <div style={{ margin: "10px 0" }}>
-        <FormControlLabel
-          sx={{
-            alignItems: "center", // force vertical centering
-          }}
-          control={
-            <Checkbox
-              style={CheckBoxStyle}
-              onChange={(e) => setCopyIn(e.target.checked)}
-            />
-          }
-          label={
-            <span
+      <Box
+        sx={{
+          position: "relative",
+          marginTop: 2,
+          marginBottom: "14px",
+          border: optIn == undefined && gdprPrompt && "1px solid red",
+          padding: optIn == undefined && gdprPrompt ? "4px" : 0,
+          width: "100%",
+          "&:focus-within .paperBorder": {
+            outline: "2px solid #3f51b5", // Color for focus state
+            outlineOffset: "-2px",
+          },
+        }}
+      >
+        <div style={{ margin: "10px 0" }}>
+          <FormControl component="fieldset">
+            <div
               style={{
-                fontSize: "0.9rem",
-                lineHeight: "1.2", // slightly taller line height for readability
-                display: "inline-block", // keeps alignment consistent
-                verticalAlign: "middle",
+                marginTop: "-10px",
+                fontSize: "small",
+                textAlign: "center",
               }}
             >
-              Tick here to copy in Living Rent to your email if you are happy to
-              share your contact details and message with us.
-            </span>
-          }
-        />
-      </div>
+              Do you want to share your details with Living Rent, in case we
+              need to contact you to discuss it more?
+            </div>
+            <RadioGroup
+              row
+              value={optIn ? "yes" : optIn == false && "no"}
+              onChange={(e) => setOptIn(e.target.value === "yes")}
+            >
+              <FormControlLabel
+                value="yes"
+                control={<Radio style={CheckBoxStyle} />}
+                label="Yes"
+              />
+              <FormControlLabel
+                value="no"
+                control={<Radio style={CheckBoxStyle} />}
+                label="No"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
+        {optIn == undefined && gdprPrompt && (
+          <div
+            style={{
+              marginTop: "-10px",
+              fontSize: "small",
+              //textAlign: "center",
+              color: "red",
+            }}
+          >
+            You must select 'yes' or 'no' here.
+          </div>
+        )}
+      </Box>
 
       <Button sx={BtnStyle} onClick={() => setStage("prompts")}>
         Back
@@ -294,6 +409,8 @@ const Mailer = ({
         title={title}
         setSent={setSent}
         copyIn={copyIn}
+        optIn={optIn}
+        handleSendClicked={handleSendClicked}
         emailClient={emailClient}
         contactDetails={contactDetails}
       />

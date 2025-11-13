@@ -90,6 +90,44 @@ const tolerableStandard = [
   },
 ];
 
+const FPPCriteria = [
+  {
+    requirement:
+      "Criminal convictions, including offences involving fraud or dishonesty, firearms, violence, drugs, or sexual offences",
+    explanation: "",
+  },
+  {
+    requirement: "Unlawful discrimination in the course of business",
+    explanation: "",
+  },
+  {
+    requirement:
+      "Contraventions of housing or landlord and tenant law, including ignoring duties as a landlord or failing to meet legal property standards",
+    explanation: "",
+  },
+  {
+    requirement:
+      "Antisocial behaviour linked to the landlord, their agent, their tenants, or the properties they manage",
+    explanation: "",
+  },
+  {
+    requirement:
+      "Failure to comply with statutory notices or orders, such as Repairing Standard Enforcement Orders, HMO licence conditions, or other housing enforcement action",
+    explanation: "",
+  },
+  {
+    requirement:
+      "Failure to follow applicable codes of practice or guidance for letting and property management where relevant",
+    explanation: "",
+  },
+  {
+    requirement:
+      "Any other information that suggests the person is not suitable to act as a landlord or manage property",
+    explanation: "",
+  },
+];
+
+
 /** Single checkbox row */
 const ChecklistItem = memo(function ChecklistItem({
   requirement,
@@ -227,6 +265,22 @@ const Prompts = ({ issue, blankTemplate }) => {
             <br />
             <Checklist
               items={tolerableStandard}
+              selected={standardsNotMet}
+              onToggle={handleToggle}
+            />
+          </>
+        )}
+
+        {issue === "report" && (
+          <>
+            Your landlord must meet what's called the{" "}
+            <a href="../fpp" target="_blank" rel="noreferrer">
+              "fit and proper person test"
+            </a>
+            , which should involve assessing the following:
+            <br />
+            <Checklist
+              items={FPPCriteria}
               selected={standardsNotMet}
               onToggle={handleToggle}
             />

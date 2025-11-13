@@ -35,6 +35,8 @@ export const SendModal = ({
   setSent,
   sent,
   copyIn,
+  handleSendClicked,
+  optIn,
   emailClient,
   contactDetails,
 }) => {
@@ -92,9 +94,16 @@ export const SendModal = ({
   };
 
   const handleSendButton = () => {
+
+    if (optIn == undefined) {
+      handleSendClicked();
+      return;
+    }
+
+
     setIsOpen(true);
 
-    copyIn &&
+    optIn &&
       submitter({
         type: "submission",
         site: "portal",

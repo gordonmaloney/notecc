@@ -1,7 +1,11 @@
 import React from "react";
 import Breadcrumbs from "../Components/Breadcrumbs";
 
+
 const Powers = () => {
+
+
+
   const Power = ({ title, link, explainer, quote }) => {
     return (
       <>

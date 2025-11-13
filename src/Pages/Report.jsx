@@ -2,8 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Prompts from "../Mailer/Prompts";
 import Breadcrumbs from "../Components/Breadcrumbs";
+import { tracker } from "../tracker";
 
 const Report = () => {
+  tracker({
+    type: "page_view",
+    campaignId: "Tenant Complaints Portal",
+  });
+
   return (
     <div className="subPage">
       <Breadcrumbs child="Report your landlord" />
