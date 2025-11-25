@@ -16,32 +16,36 @@ import ScrollToTop from "./Components/ScrollToTop";
 import TheCampaign from "./Pages/TheCampaign";
 import Powers from "./Pages/Powers";
 
+
+
+
 const App = () => {
-  return (
-    <div className="page">
-      <Router>
-        <ScrollToTop />
+  
 
-        <Header />
-        <main>
-       
-          <Routes>
-            <Route path="/" element={<Landing />} />
+	return (
+		<div className="page">
+			<Router>
+				<ScrollToTop />
 
-            <Route path="/report" element={<Report />} />
-            <Route path="/repairs" element={<Repairs />} />
+				<Header />
+				<main>
+					<Routes>
+						<Route path="/" element={<Landing />} />
 
-            <Route path="/tolerable" element={<TolerableStandard />} />
-            <Route path="/fpp" element={<FPP />} />
+						<Route path="/report" element={<Report />} />
+						<Route path="/repairs" element={<Repairs />} />
 
-            <Route path="/campaign" element={<TheCampaign />} />
-            <Route path="/powers" element={<Powers />} />
-          </Routes>
-        </main>
-      </Router>
-      <Footer />
-    </div>
-  );
+						<Route path="/tolerable" element={<TolerableStandard />} />
+						<Route path="/fpp" element={<FPP />} />
+
+						<Route path="/campaign" element={<TheCampaign />} />
+						<Route path="/powers" element={<Powers />} />
+					</Routes>
+				</main>
+			</Router>
+			<Footer />
+		</div>
+	);
 };
 
 export default App;
