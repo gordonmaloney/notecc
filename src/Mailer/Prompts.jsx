@@ -338,7 +338,8 @@ const Prompts = ({ issue, blankTemplate }) => {
 		setContactDetails({
 			name: userName,
 			number: userNumber,
-			email: userEmail,
+      email: userEmail,
+      postcode: postcode
 		});
 	}, [userName, userNumber, userEmail]);
 
