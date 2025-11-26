@@ -291,31 +291,34 @@ const Prompts = ({ issue, blankTemplate }) => {
 	);
 
 	const handlePrompts = useCallback(() => {
+		
+		
 		const standardsText = `The following are aspects of the Tolerable Standard which my property does not meet:\n- ${standardsNotMet
 			.map((st) => st.replaceAll("*", ""))
-      .join("\n- ")}`;
-    
-    
-    		const FPPtext = `I have particular concerns about the following criteria regarding the fit and proper person test my landlord should meet:\n- ${standardsNotMet
-					.map((st) => st.replaceAll("*", ""))
-					.join("\n- ")}`;
+			.join("\n- ")}`;
 
+		const FPPtext = `I have particular concerns about the following criteria regarding the fit and proper person test my landlord should meet:\n- ${standardsNotMet
+			.map((st) => st.replaceAll("*", ""))
+			.join("\n- ")}`;
+
+		
 		setTemplate(
 			blankTemplate
 				.replace("<<|userStory|>>", userStory)
 				.replace("<<|userName|>>", userName)
 				.replace("<<|postcode|>>", postcode)
-				.replace("<<|StandardsNotMet|>>", standardsText)
-				.replace("<<|FPPissues|>>", FPPtext)
+				.replace(
+					"<<|StandardsNotMet|>>",
+					standardsNotMet.length > 0 ? standardsText : ""
+				)
+				.replace("<<|FPPissues|>>", standardsNotMet.length > 0 ? FPPtext : "")
 		);
 
 		const baseAnswers = [userName, userStory, postcode];
 
 
-    if (issue === "repair" && standardsNotMet.length > 0)
-			baseAnswers.push(standardsText);
-		if (issue === "report" && standardsNotMet.length > 0)
-			baseAnswers.push(FPPtext);
+    if (issue === "repair") baseAnswers.push(standardsText);
+		if (issue === "report") baseAnswers.push(FPPtext);
 
 		setAnswers(baseAnswers);
 	}, [blankTemplate, issue, postcode, standardsNotMet, userName, userStory]);
