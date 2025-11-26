@@ -174,6 +174,18 @@ p {
   padding: 0 50px 20px 50px;
 }
 
+.subPageFull {
+  width: 100%;
+}
+
+.subPageFullInner {
+  background-color: #f0eaef;
+  position: relative;
+  margin-top: -30px;
+  padding: 0px 50px 20px 50px;
+  margin-bottom: -50px;
+}
+
 .logo {
   filter: contrast(150%);
   width: 400px;
@@ -397,4 +409,11 @@ p {
     max-width: 1000px;
     padding: 0 3% 20px 3%;
   }
+  
+.subPageFullInner {
+  margin-top: -30px;
+  padding: 0 3% 20px 3%;
+  margin-bottom: -50px;
 }
+}
+
