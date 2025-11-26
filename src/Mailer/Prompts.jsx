@@ -310,8 +310,12 @@ const Prompts = ({ issue, blankTemplate }) => {
 		);
 
 		const baseAnswers = [userName, userStory, postcode];
-    if (issue === "repair") baseAnswers.push(standardsText);
-    		if (issue === "report") baseAnswers.push(FPPtext);
+
+
+    if (issue === "repair" && standardsNotMet.length > 0)
+			baseAnswers.push(standardsText);
+		if (issue === "report" && standardsNotMet.length > 0)
+			baseAnswers.push(FPPtext);
 
 		setAnswers(baseAnswers);
 	}, [blankTemplate, issue, postcode, standardsNotMet, userName, userStory]);
