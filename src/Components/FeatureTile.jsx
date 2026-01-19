@@ -3,6 +3,7 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import { Link } from "react-router-dom";
 import HardwareIcon from "@mui/icons-material/Hardware";
 import NoAccountsIcon from "@mui/icons-material/NoAccounts";
+import './FeatureTile.css'
 
 export const FeatureTile = ({ title, link }) => {
   return (

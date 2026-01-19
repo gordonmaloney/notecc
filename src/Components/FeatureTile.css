@@ -1,0 +1,68 @@
+.tileLink {
+  display: block;
+  padding: 0;
+  max-width: 100%;
+  text-decoration: none !important;
+}
+
+.featureTile {
+  border: 1px solid #6d3465;
+  padding: 1.5rem;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  text-decoration: none !important;
+}
+
+.featureArrow {
+  color: #6d3465;
+  text-decoration: none !important;
+}
+
+.featureTile:hover {
+  background-color: #6d3465;
+}
+
+.featureTile:hover .featureTitle,
+.featureTile:hover .featureArrow {
+  color: white;
+}
+
+.featureTileReverse {
+  border: 1px solid #6d3465;
+  background-color: #6d3465;
+  color: white;
+  padding: 1.5rem;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+.featureTitleReverse {
+  font-size: 1.25rem;
+  text-decoration: none !important;
+  color: white;
+}
+
+.featureArrowReverse {
+  color: white;
+  text-decoration: none !important;
+}
+.featureTileReverse:hover {
+  outline: 3px solid #6d3465;
+  outline-offset: 4px;
+}

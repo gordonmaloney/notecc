@@ -328,7 +328,7 @@ const Mailer = ({
       >
         <em>
           Your answers have been incorporated into the template message,
-          highlighted for you in <span style={{background: "yellow",padding: "1px"}}>yellow</span> - check to make sure they still look
+          highlighted for you in <span className="highlightText">yellow</span> - check to make sure they still look
           okay!{" "}
         </em>
       </div>

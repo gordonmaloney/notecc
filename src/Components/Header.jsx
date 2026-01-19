@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import logo from "../lr-ed-logo.png";
 import { Link } from "react-router-dom";
 import { PageList } from "../PageList";
+import './Header.css'
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -50,7 +51,7 @@ const Header = () => {
             onClick={() => setOpen((v) => !v)}
           >
             <span className="icon" aria-hidden="true"><span /></span>
-            <span className="label">{open ? "CLOSE" : "MENU"}</span>
+            <span className="menu-toggle-label">{open ? "CLOSE" : "MENU"}</span>
           </button>
         </div>
       </header>
