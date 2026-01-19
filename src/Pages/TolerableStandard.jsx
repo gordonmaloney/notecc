@@ -3,7 +3,7 @@ import Breadcrumbs from "../Components/Breadcrumbs";
 
 const TolerableStandard = () => {
   return (
-    <div className="subPage">
+    <div className="page-wrapper">
       <Breadcrumbs child="The Tolerable Standard" />
 
       <section className="mx-auto max-w-3xl px-4 py-8">

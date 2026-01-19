@@ -11,9 +11,9 @@ const Repairs = () => {
     type: "page_view",
     campaignId: "Tenant Complaints Portal",
   });
-  
+
   return (
-    <div className="subPage">
+    <div className="page-wrapper">
       <Breadcrumbs child="Get help with repairs" />
 
       <h1>Get help with repairs</h1>

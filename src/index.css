@@ -34,15 +34,12 @@ html {
 h1 {
   font-weight: 500;
   font-size: 2.7rem;
+  line-height: 2.7rem;
   color: #333;
 }
 
 h2 {
   color: #333;
-}
-
-h1 {
-  line-height: 2.7rem;
 }
 
 a {
@@ -56,15 +53,15 @@ p {
 
 .featureTile {
   border: 1px solid #6d3465;
-  padding: 1.5em;
+  padding: 1.5rem;
   position: relative;
   text-decoration: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
-  max-width: 90%;
+  width: 100%;
   text-decoration: none !important;
+  box-sizing: border-box;
 }
 
 .featureTitle {
@@ -90,15 +87,15 @@ p {
   border: 1px solid #6d3465;
   background-color: #6d3465;
   color: white;
-  padding: 1.5em;
+  padding: 1.5rem;
   position: relative;
   text-decoration: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
-  max-width: 90%;
+  width: 100%;
   text-decoration: none !important;
+  box-sizing: border-box;
 }
 
 .featureTitleReverse {
@@ -112,12 +109,8 @@ p {
   text-decoration: none !important;
 }
 .featureTileReverse:hover {
-  background-color: white;
-}
-
-.featureTileReverse:hover .featureTitleReverse,
-.featureTileReverse:hover .featureArrowReverse {
-  color: #6d3465;
+  outline: 3px solid #6d3465;
+  outline-offset: 4px;
 }
 
 .tileLink,
@@ -156,39 +149,22 @@ p {
 
 .footer {
   margin-top: 50px;
-  padding: 10px 30px 0px 30px;
+  padding: 2rem;
   border-top: 2px solid lightgrey;
   background-color: #6d3465;
   color: white;
 }
 
-.landing {
-  width: 80%;
+.page-wrapper {
   max-width: 1000px;
-  padding: 0 50px 20px 50px;
+  padding: 1.5rem 3rem;
 }
 
-.subPage {
-  width: 80%;
-  max-width: 1000px;
-  padding: 0 50px 20px 50px;
-}
-
-.subPageFull {
-  width: 100%;
-}
-
-.subPageFullInner {
+.page-wrapper-shaded {
   background-color: #f0eaef;
   position: relative;
   margin-top: -30px;
-  padding: 0px 50px 20px 50px;
   margin-bottom: -50px;
-}
-
-.logo {
-  filter: contrast(150%);
-  width: 400px;
 }
 
 :root {
@@ -199,34 +175,53 @@ p {
 
 /* Header bar */
 .header {
-  max-width: 100vw;
-  height: 100px;
-  padding: 0 50px 0 50px;
-  border-bottom: 2px solid lightgrey;
+  width: 100vw;
+  border-bottom: 3px solid #f0eaef;
 
   position: sticky;
   top: 0;
   z-index: 50;
+  background-color: white;
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 1rem;
+  align-items: center;
+  height: var(--header-h);
+}
+
+.logo-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: var(--header-h);
-  background-color: white;
+  padding: 1rem;
+  margin-left: 2rem;
+}
+
+.logo {
+  width: 100%;
+  max-width: 320px;
 }
 
 /* Menu button block on the right */
 .menu-toggle {
   display: inline-flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   height: var(--header-h);
   padding: 10px 20px;
-  background: var(--brand-purple);
-  color: var(--text-on-purple);
+  background: transparent;
+  color: rgb(109, 52, 101);
   border: none;
   cursor: pointer;
   outline-offset: 4px;
   width: 120px;
+}
+.menu-toggle.open {
+  background: var(--brand-purple);
+  color: var(--text-on-purple);
 }
 
 /* Hamburger / Close icon */
@@ -285,7 +280,7 @@ p {
   top: var(--header-h); /* sit just under the header */
   left: 0;
   right: 0;
-  z-index: 40;
+  z-index: 60;
   background: var(--brand-purple);
   color: var(--text-on-purple);
 
@@ -356,30 +351,22 @@ p {
 }
 
 @media (max-width: 600px) {
-  .header {
-    padding-left: 10px;
-    padding-right: 0;
-    height: 80px;
+  body {
+    --header-h: 80px;
   }
 
-  .landing {
-    padding: 5px auto;
-    width: 75vw;
+  .header-inner {
+    grid-template-columns: 1fr 80px;
   }
 
-  .logo {
-    width: 70vw;
+  .logo-link {
     margin: 0;
   }
 
-  .featureTile {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .featureTileReverse {
-    width: 80%;
-    margin: 0 auto;
+  .tileLink {
+    display: block;
+    padding: 0;
+    max-width: 100%;
   }
 
   .label {
@@ -388,32 +375,26 @@ p {
   }
 
   .menu-toggle {
-    width: 60px !important;
-    height: 80px;
-    padding: 10px auto !important;
+    width: var(--header-h);
+    height: var(--header-h);
+    padding: 10px auto;
     margin-right: 0;
   }
 
-  .mega {
-    top: 80px;
+  .page-wrapper {
+    padding: 0.75rem 1.5rem;
   }
-
-  .landing {
-    width: 94%;
-    max-width: 1000px;
-    padding: 0 3% 20px 3%;
-  }
-
-  .subPage {
-    width: 94%;
-    max-width: 1000px;
-    padding: 0 3% 20px 3%;
-  }
-  
-.subPageFullInner {
-  margin-top: -30px;
-  padding: 0 3% 20px 3%;
-  margin-bottom: -50px;
-}
 }
 
+/**
+ * Content container
+ *
+ * Wrap content in this class to give it a max width
+ * and centered.
+ */
+.content-wrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}

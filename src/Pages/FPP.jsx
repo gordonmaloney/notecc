@@ -4,7 +4,7 @@ import Breadcrumbs from "../Components/Breadcrumbs";
 const FPP = () => {
   return (
     <div
-      className="subPage"
+      className="page-wrapper"
     >
       <Breadcrumbs child="The 'Fit and Proper Person' Test" />
 

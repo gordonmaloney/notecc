@@ -3,7 +3,7 @@ import Breadcrumbs from "../Components/Breadcrumbs";
 
 const TheCampaign = () => {
   return (
-    <div className="subPage">
+    <div className="page-wrapper">
       <Breadcrumbs child="The Campaign" />
       <h1>Our Council is letting landlords off the hook</h1>
 

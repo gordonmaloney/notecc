@@ -33,24 +33,26 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <Link to="../">
-          <img
-            src={logo}
-            alt="Not the City of Edinburgh Council"
-            className="logo"
-          />
-        </Link>
+        <div className="header-inner content-wrapper">
+          <Link to="../" className="logo-link">
+            <img
+              src={logo}
+              alt="Not the City of Edinburgh Council"
+              className="logo"
+            />
+          </Link>
 
-        <button
-          ref={btnRef}
-          className={`menu-toggle ${open ? "open" : ""}`}
-          aria-expanded={open}
-          aria-controls="site-mega"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="icon" aria-hidden="true" />
-          <span className="label">{open ? "CLOSE" : "MENU"}</span>
-        </button>
+          <button
+            ref={btnRef}
+            className={`menu-toggle ${open ? "open" : ""}`}
+            aria-expanded={open}
+            aria-controls="site-mega"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="icon" aria-hidden="true"><span /></span>
+            <span className="label">{open ? "CLOSE" : "MENU"}</span>
+          </button>
+        </div>
       </header>
 
       {/* Mega panel */}
