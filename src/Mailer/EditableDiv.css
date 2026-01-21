@@ -1,0 +1,13 @@
+.editableDivBox {
+  outline: 1px solid rgba(0, 0, 0, 0.65);
+}
+
+.editableDivBox:focus-within {
+  box-sizing: border-box;
+  outline: 2px solid rgba(0, 0, 0, 1);
+}
+
+.editableDivBox:focus-within .editableDivBoxLabel {
+  color: black !important;
+  font-weight: 400 !important;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Box, Tooltip, Grid } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { BtnStyle, BtnStyleSmall, BtnStyleTiny } from "../MUIStyles";
+import { BtnStyle, BtnStylePrimary, BtnStyleSmall, BtnStyleTiny } from "../MUIStyles";
 import { webmailProviders } from "./ClientHandling/webmailProviders";
 import { Stack } from "@mui/material";
 import { submitter } from "../submitter";
@@ -16,11 +16,12 @@ const ModalStyle = {
   height: "auto",
   maxWidth: "90vw",
   margin: "0 auto",
-  padding: "15px",
+  padding: "2rem",
   backgroundColor: "#F6F3F6",
   borderRadius: "0",
   border: "1px solid black",
   backdropFilter: "blur(5px)",
+  boxSizing: "border-box",
 };
 
 export const SendModal = ({
@@ -128,7 +129,7 @@ export const SendModal = ({
             <CloseIcon />
           </span>
 
-          <h1 style={{ margin: "0 0 12px 0" }}>
+          <h1 style={{ fontSize: "1.5rem", lineHeight: "1", margin: "0 1rem 1.5rem 0" }}>
             {sent ? "What now?" : "Send your message"}
           </h1>
 
@@ -140,48 +141,38 @@ export const SendModal = ({
                 recipients, subject, and body of your email to whatever client
                 you use:
               </p>
-              <Grid
-                container
-                spacing={1}
-                justifyContent={"center"}
-                alignContent={"center"}
+              <Stack
+                direction="row"
+                justifyContent="center"
+                flexWrap="wrap" // so buttons drop to the next line on small screens
+                gap="0.5rem"
               >
-                <Grid item sm={4} xs={12}>
-                  <center>
-                    <Button
-                      sx={BtnStyleSmall}
-                      onClick={() =>
-                        navigator.clipboard.writeText(
-                          `${messaging.map((targ) => targ.email + `,`)}  ${bcc}`
-                        )
-                      }
-                    >
-                      Copy recipients
-                    </Button>
-                  </center>
-                </Grid>
-
-                <Grid item sm={4} xs={12}>
-                  <center>
-                    <Button
-                      sx={BtnStyleSmall}
-                      onClick={() => navigator.clipboard.writeText(SL)}
-                    >
-                      Copy subject
-                    </Button>
-                  </center>
-                </Grid>
-                <Grid item sm={4} xs={12}>
-                  <center>
-                    <Button
-                      sx={BtnStyleSmall}
-                      onClick={() => navigator.clipboard.writeText(body)}
-                    >
-                      Copy email body
-                    </Button>
-                  </center>
-                </Grid>
-              </Grid>
+                <Button
+                  sx={BtnStyleSmall}
+                  fullWidth={true}
+                  onClick={() =>
+                    navigator.clipboard.writeText(
+                      `${messaging.map((targ) => targ.email + `,`)}  ${bcc}`
+                    )
+                  }
+                >
+                  Copy recipients
+                </Button>
+                <Button
+                  sx={BtnStyleSmall}
+                  fullWidth={true}
+                  onClick={() => navigator.clipboard.writeText(SL)}
+                >
+                  Copy subject
+                </Button>
+                <Button
+                  sx={BtnStyleSmall}
+                  fullWidth={true}
+                  onClick={() => navigator.clipboard.writeText(body)}
+                >
+                  Copy email body
+                </Button>
+              </Stack>
             </>
           ) : !sent ? (
             <>
@@ -190,51 +181,48 @@ export const SendModal = ({
                 client, and the message will be pre-filled in there for you.
                 Then just hit send in there to fire it off.
               </p>
-              <center>
+              <Button
+                href={generateLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  setSent(true);
+                }}
+                sx={BtnStylePrimary}
+                style={{marginTop: "0.5rem"}}
+                fullWidth={true}
+              >
+                Send{" "}
+                {`email${
+                  emailClient && emailClient !== "mobile"
+                    ? ` with ${emailClient}`
+                    : ""
+                }`}
+              </Button>
+              {!Mobile && emailClient && (
                 <Button
-                  href={generateLink()}
+                  href={generateLink(true)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => {
-                    setSent(true);
-                  }}
-                  sx={BtnStyle}
+                  onClick={() => setSent(true)}
+                  fullWidth={true}
+                  sx={{ ...BtnStyleTiny, marginTop: "1rem" }}
                 >
-                  Send{" "}
-                  {`email${
-                    emailClient && emailClient !== "mobile"
-                      ? ` with ${emailClient}`
-                      : ""
-                  }`}
+                  Send with your email app
                 </Button>
-                {!Mobile && emailClient && (
-                  <div>
-                    <Button
-                      href={generateLink(true)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setSent(true)}
-                      sx={{ ...BtnStyleTiny, marginTop: "5px" }}
-                    >
-                      Send with your email app
-                    </Button>
-                  </div>
-                )}
-              </center>
-
-              <br />
-              <span
+              )}
+              <div
                 style={{
-                  fontSize: "12px",
+                  fontSize: "0.875rem",
+                  textAlign: "center",
+                  marginTop: "1.5rem",
                 }}
               >
-                <em>
-                  Not working?{" "}
-                  <span onClick={() => setNoClient(true)}>
-                    <u>Copy & paste instead.</u>
-                  </span>
-                </em>
-              </span>
+                Not working?{" "}
+                <span onClick={() => setNoClient(true)}>
+                  <u>Copy & paste instead.</u>
+                </span>
+              </div>
             </>
           ) : (
             <>
@@ -243,14 +231,14 @@ export const SendModal = ({
                 <b>take a moment to share the campaign with a few friends?</b>{" "}
                 You can use the buttons below:
               </p>
-              <div style={{ display: "flex", justifyContent: "space-around" }}>
                 <Stack
                   direction="row"
                   justifyContent="center"
                   flexWrap="wrap" // so buttons drop to the next line on small screens
+                  gap="0.5rem"
                 >
                   <Button
-                    sx={{ ...BtnStyle, margin: "10px 10px" }}
+                    sx={BtnStyle}
                     target="_blank"
                     href={`http://wa.me/?text=${encodeURI(
                       "Hey! I've just taken part in this campaign - check it out here: " +
@@ -258,20 +246,21 @@ export const SendModal = ({
                         " " +
                         window.location.href
                     )}`}
+                    fullWidth={true}
                   >
                     Share on WhatsApp
                   </Button>
                   <Button
-                    sx={{ ...BtnStyle, margin: "10px 10px" }}
+                    sx={BtnStyle}
                     target="_blank"
                     href={`https://bsky.app/intent/compose?text=${encodeURI(
                       title + " " + window.location.href
                     )}`}
+                    fullWidth={true}
                   >
                     Share on BlueSky
                   </Button>
                 </Stack>
-              </div>
 
               <p>
                 You can also just{" "}
@@ -321,15 +310,6 @@ export const SendModal = ({
               </span>
             </>
           )}
-
-          <center>
-            <Button
-              sx={{ ...BtnStyle, transform: "scale(0.8)", marginTop: "5px" }}
-              onClick={onClose}
-            >
-              Close
-            </Button>
-          </center>
         </Box>
       </Modal>
     </>

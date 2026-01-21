@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import logo from "../lr-ed-logo.png";
 import { Link } from "react-router-dom";
 import { PageList } from "../PageList";
+import './Header.css'
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -33,24 +34,26 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <Link to="../">
-          <img
-            src={logo}
-            alt="Not the City of Edinburgh Council"
-            className="logo"
-          />
-        </Link>
+        <div className="header-inner content-wrapper">
+          <Link to="../" className="logo-link">
+            <img
+              src={logo}
+              alt="Not the City of Edinburgh Council"
+              className="logo"
+            />
+          </Link>
 
-        <button
-          ref={btnRef}
-          className={`menu-toggle ${open ? "open" : ""}`}
-          aria-expanded={open}
-          aria-controls="site-mega"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className="icon" aria-hidden="true" />
-          <span className="label">{open ? "CLOSE" : "MENU"}</span>
-        </button>
+          <button
+            ref={btnRef}
+            className={`menu-toggle ${open ? "open" : ""}`}
+            aria-expanded={open}
+            aria-controls="site-mega"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="icon" aria-hidden="true"><span /></span>
+            <span className="menu-toggle-label">{open ? "CLOSE" : "MENU"}</span>
+          </button>
+        </div>
       </header>
 
       {/* Mega panel */}

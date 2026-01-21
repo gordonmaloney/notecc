@@ -45,7 +45,7 @@ const Powers = () => {
 
 	return (
 		<div className="subPageFull">
-			<div className="subPage">
+			<div className="page-wrapper">
 				<Breadcrumbs child="Council powers" />
 
 				<h1>The Council has all the powers it needs</h1>
@@ -69,7 +69,7 @@ const Powers = () => {
 				<hr />
 			</div>
 
-			<div className="subPageFullInner">
+			<div className="page-wrapper page-wrapper-shaded">
 				<ImageList
 					variant="masonry"
 					cols={cols}

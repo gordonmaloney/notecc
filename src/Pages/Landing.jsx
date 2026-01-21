@@ -8,7 +8,7 @@ import { PageList } from "../PageList";
 
 const Landing = () => {
   return (
-    <div className="landing">
+    <div className="page-wrapper">
       <h1>Tenant Complaints Portal</h1>
 
            <p>

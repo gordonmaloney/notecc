@@ -20,7 +20,7 @@ import Powers from "./Pages/Powers";
 
 
 const App = () => {
-  
+
 
 	return (
 		<div className="page">
@@ -28,7 +28,7 @@ const App = () => {
 				<ScrollToTop />
 
 				<Header />
-				<main>
+				<main className="content-wrapper">
 					<Routes>
 						<Route path="/" element={<Landing />} />
 

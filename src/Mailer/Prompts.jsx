@@ -202,23 +202,15 @@ const ChecklistItem = memo(function ChecklistItem({
 }) {
 	return (
 		<FormControlLabel
-			sx={{ alignItems: "center" }}
+			sx={{ alignItems: "flex-start" }}
 			control={
 				<Checkbox style={CheckBoxStyle} checked={checked} onChange={onToggle} />
 			}
 			label={
 				<ReactMarkdown
-					style={{
-						display: "inline-block",
-						verticalAlign: "middle",
-						fontSize: "inherit",
-						lineHeight: "inherit",
-						whiteSpace: "pre-wrap",
-						margin: "0",
-					}}
 					components={{
 						// render paragraphs as inline span so it behaves like before
-						p: ({ node, ...props }) => <span {...props} />,
+						p: ({ node, ...props }) => <span {...props} style={{display: "inline-block",padding: "9px"}} />,
 					}}
 				>
 					{requirement}
@@ -291,8 +283,8 @@ const Prompts = ({ issue, blankTemplate }) => {
 	);
 
 	const handlePrompts = useCallback(() => {
-		
-		
+
+
 		const standardsText = `The following are aspects of the Tolerable Standard which my property does not meet:\n- ${standardsNotMet
 			.map((st) => st.replaceAll("*", ""))
 			.join("\n- ")}`;
@@ -301,7 +293,7 @@ const Prompts = ({ issue, blankTemplate }) => {
 			.map((st) => st.replaceAll("*", ""))
 			.join("\n- ")}`;
 
-		
+
 		setTemplate(
 			blankTemplate
 				.replace("<<|userStory|>>", userStory)
@@ -364,7 +356,7 @@ const Prompts = ({ issue, blankTemplate }) => {
 						criteria. Use the buttons below to say if any of the following apply
 						to your home:
 						<br />
-						<div style={{ margin: "8px 20px" }}>
+						<div style={{ margin: "1.5rem 0" }}>
 							<Checklist
 								items={tolerableStandardNew}
 								selected={standardsNotMet}
@@ -383,7 +375,7 @@ const Prompts = ({ issue, blankTemplate }) => {
 						. If you have concerns about any of the following in relation to
 						your landlord, tick them below:
 						<br />
-						<div style={{ margin: "8px 20px" }}>
+						<div style={{ margin: "1.5rem 0" }}>
 							<Checklist
 								items={FPPCriteria}
 								selected={standardsNotMet}

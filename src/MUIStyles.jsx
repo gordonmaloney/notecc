@@ -19,6 +19,23 @@ export const BtnStyle = {
   },
 };
 
+export const BtnStylePrimary = {
+  fontSize: "large",
+  textTransform: "none",
+  borderRadius: "0px",
+  padding: "8px 8px 4px 8px",
+  color: "white",
+  backgroundColor: " #6d3465",
+  "&:hover, &:active": {
+    outline: "2px solid #6d3465",
+    outlineOffset: "3px",
+  },
+  "&:disabled": {
+    backgroundColor: "rgb(219, 219, 219)",
+    color: "rgb(174, 174, 174)",
+  },
+};
+
 export const BtnStyleDisabled = {
   fontSize: "large",
   textTransform: "none",
@@ -100,7 +117,7 @@ export const BtnStyleTiny = {
 };
 
 export const CheckBoxStyle = {
-  color: "#6d3465", 
+  color: "#6d3465",
 };
 
 export const TextFieldStyle = {

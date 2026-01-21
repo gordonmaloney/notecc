@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import './EditableDiv.css'
 
 //LOOK I KNOW THIS WHOLE COMPONENT IS BANANAS BUT IT WORKS SO DON'T CHANGE IT WITHOUT BEING VERY CAREFUL
 
@@ -54,7 +55,7 @@ const EditableDiv = ({
           marginTop: "10px",
           padding: "10px",
           position: "relative",
-          borderRadius: "4px",
+          borderRadius: "0",
           marginBottom: "12px",
         }}
         className="editableDivBox"
@@ -63,11 +64,11 @@ const EditableDiv = ({
           htmlFor="editableDiv"
           style={{
             position: "absolute",
-            top: "-9px",
+            top: "-8px",
             left: "8px",
-            fontSize: "0.78rem",
-            fontWeight: "320",
-            color: "rgb(80,80,80)",
+            fontSize: "0.75rem",
+            fontWeight: "500",
+            color: "rgba(0,0,0,0.65)",
             backgroundColor: "white",
             padding: "0 5px",
           }}

@@ -1,0 +1,194 @@
+/* Header bar */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100vw;
+  border-bottom: 3px solid #f0eaef;
+  background-color: white;
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 1rem;
+  align-items: center;
+  height: var(--header-h);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin: 0;
+}
+
+.logo {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Menu button block on the right */
+.menu-toggle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: var(--header-h);
+  height: var(--header-h);
+  background: transparent;
+  color: rgb(109, 52, 101);
+  border: none;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+.menu-toggle.open {
+  background: var(--brand-purple);
+  color: var(--text-on-purple);
+}
+
+/* Hamburger / Close icon */
+.menu-toggle .icon {
+  position: relative;
+  width: 22px;
+  height: 16px;
+  display: inline-block;
+}
+.menu-toggle .icon::before,
+.menu-toggle .icon::after,
+.menu-toggle .icon span {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.menu-toggle .icon::before {
+  top: 0;
+}
+.menu-toggle .icon::after {
+  bottom: 0;
+}
+.menu-toggle .icon span {
+  top: 7px;
+} /* middle bar */
+
+/* create the middle bar with a real element so screenreaders ignore it */
+.menu-toggle .icon::before,
+.menu-toggle .icon::after {
+}
+.menu-toggle-label {
+  display: none;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* turn into an X when open */
+.menu-toggle.open .icon::before {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.open .icon::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.menu-toggle.open .icon span {
+  opacity: 0;
+}
+
+/* Mega dropdown */
+/* replace the old .mega rules with these */
+
+.mega {
+  position: fixed; /* take it out of document flow */
+  top: var(--header-h); /* sit just under the header */
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: var(--brand-purple);
+  color: var(--text-on-purple);
+
+  /* hide without affecting layout */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  pointer-events: none;
+
+  transition: opacity 0.18s ease, transform 0.18s ease,
+    visibility 0s linear 0.18s;
+}
+
+.mega.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
+}
+
+.mega-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 28px;
+}
+
+.mega-title {
+  margin: 0 0 16px;
+  color: white;
+  font-size: 20px;
+  padding: 10px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cols ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cols li {
+  margin: 10px 0;
+}
+.cols a {
+  color: var(--text-on-purple);
+  text-decoration: none;
+}
+.cols a:hover,
+.cols a:focus {
+  text-decoration: underline;
+}
+
+@media (min-width: 600px) {
+
+  .header-inner {
+    grid-template-columns: 1fr 120px;
+    padding-left: 2rem;
+  }
+
+  .menu-toggle {
+    width: 120px;
+    padding: 10px 20px;
+    margin-right: 0;
+  }
+
+  .menu-toggle-label {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .cols {
+    grid-template-columns: 1fr;
+  }
+
+  .mega-inner {
+    padding: 18px 14px 22px;
+  }
+}

@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
+:root {
+  --brand-purple: #6f2c7f; /* tweak to match your palette */
+  --text-on-purple: #fff;
+  --header-h: 80px;
+}
+
+@media (min-width: 600px) {
+
+  :root {
+    --header-h: 100px;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -34,15 +47,12 @@ html {
 h1 {
   font-weight: 500;
   font-size: 2.7rem;
+  line-height: 2.7rem;
   color: #333;
 }
 
 h2 {
   color: #333;
-}
-
-h1 {
-  line-height: 2.7rem;
 }
 
 a {
@@ -54,366 +64,46 @@ p {
   margin: 0.75rem 0 1.5rem;
 }
 
-.featureTile {
-  border: 1px solid #6d3465;
-  padding: 1.5em;
-  position: relative;
-  text-decoration: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 400px;
-  max-width: 90%;
-  text-decoration: none !important;
-}
-
-.featureTitle {
-  font-size: 1.25rem;
-  text-decoration: none !important;
-}
-
-.featureArrow {
-  color: #6d3465;
-  text-decoration: none !important;
-}
-
-.featureTile:hover {
-  background-color: #6d3465;
-}
-
-.featureTile:hover .featureTitle,
-.featureTile:hover .featureArrow {
-  color: white;
-}
-
-.featureTileReverse {
-  border: 1px solid #6d3465;
-  background-color: #6d3465;
-  color: white;
-  padding: 1.5em;
-  position: relative;
-  text-decoration: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 400px;
-  max-width: 90%;
-  text-decoration: none !important;
-}
-
-.featureTitleReverse {
-  font-size: 1.25rem;
-  text-decoration: none !important;
-  color: white;
-}
-
-.featureArrowReverse {
-  color: white;
-  text-decoration: none !important;
-}
-.featureTileReverse:hover {
-  background-color: white;
-}
-
-.featureTileReverse:hover .featureTitleReverse,
-.featureTileReverse:hover .featureArrowReverse {
-  color: #6d3465;
-}
-
-.tileLink,
-.breadcrumbs {
-  text-decoration: none !important;
-}
-
-.breadcrumbs {
-  font-size: 0.9em;
-  font-weight: 400;
-  margin: 0.3rem 0;
-}
-
-.breadcrumbs a {
-  font-weight: 700;
-  text-decoration: none;
-}
-
 .highlightText {
   background-color: yellow;
 }
 
-.editableDivBox {
-  outline: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.editableDivBox:focus-within {
-  box-sizing: border-box;
-  outline: 2px solid rgba(0, 0, 0, 1);
-}
-
-.editableDivBox:focus-within .editableDivBoxLabel {
-  color: black !important;
-  font-weight: 400 !important;
-}
-
-.footer {
-  margin-top: 50px;
-  padding: 10px 30px 0px 30px;
-  border-top: 2px solid lightgrey;
-  background-color: #6d3465;
-  color: white;
-}
-
-.landing {
-  width: 80%;
-  max-width: 1000px;
-  padding: 0 50px 20px 50px;
-}
-
-.subPage {
-  width: 80%;
-  max-width: 1000px;
-  padding: 0 50px 20px 50px;
-}
-
-.subPageFull {
+/**
+ * Content container
+ *
+ * The main content on a page should be wrapped in
+ * this class to give it a max width and center it
+ * on the screen.
+ */
+.content-wrapper {
   width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.subPageFullInner {
+/**
+ * Page container
+ *
+ * Main content blocks on each page should be
+ * wrapped in one of these classes to separate
+ * it from the header/footer.
+ */
+.page-wrapper {
+  max-width: 1000px;
+  padding: 0.75rem 1.5rem;
+}
+
+.page-wrapper-shaded {
   background-color: #f0eaef;
   position: relative;
   margin-top: -30px;
-  padding: 0px 50px 20px 50px;
   margin-bottom: -50px;
 }
 
-.logo {
-  filter: contrast(150%);
-  width: 400px;
-}
+@media (min-width: 600px) {
 
-:root {
-  --brand-purple: #6f2c7f; /* tweak to match your palette */
-  --text-on-purple: #fff;
-  --header-h: 100px;
-}
-
-/* Header bar */
-.header {
-  max-width: 100vw;
-  height: 100px;
-  padding: 0 50px 0 50px;
-  border-bottom: 2px solid lightgrey;
-
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: var(--header-h);
-  background-color: white;
-}
-
-/* Menu button block on the right */
-.menu-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  height: var(--header-h);
-  padding: 10px 20px;
-  background: var(--brand-purple);
-  color: var(--text-on-purple);
-  border: none;
-  cursor: pointer;
-  outline-offset: 4px;
-  width: 120px;
-}
-
-/* Hamburger / Close icon */
-.menu-toggle .icon {
-  position: relative;
-  width: 22px;
-  height: 16px;
-  display: inline-block;
-}
-.menu-toggle .icon::before,
-.menu-toggle .icon::after,
-.menu-toggle .icon span {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: currentColor;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.menu-toggle .icon::before {
-  top: 0;
-}
-.menu-toggle .icon::after {
-  bottom: 0;
-}
-.menu-toggle .icon span {
-  top: 7px;
-} /* middle bar */
-
-/* create the middle bar with a real element so screenreaders ignore it */
-.menu-toggle .icon::before,
-.menu-toggle .icon::after {
-}
-.menu-toggle .label {
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-/* turn into an X when open */
-.menu-toggle.open .icon::before {
-  transform: translateY(7px) rotate(45deg);
-}
-.menu-toggle.open .icon::after {
-  transform: translateY(-7px) rotate(-45deg);
-}
-.menu-toggle.open .icon span {
-  opacity: 0;
-}
-
-/* Mega dropdown */
-/* replace the old .mega rules with these */
-
-.mega {
-  position: fixed; /* take it out of document flow */
-  top: var(--header-h); /* sit just under the header */
-  left: 0;
-  right: 0;
-  z-index: 40;
-  background: var(--brand-purple);
-  color: var(--text-on-purple);
-
-  /* hide without affecting layout */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-  pointer-events: none;
-
-  transition: opacity 0.18s ease, transform 0.18s ease,
-    visibility 0s linear 0.18s;
-}
-
-.mega.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
-}
-
-.mega-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 16px 28px;
-}
-
-.mega-title {
-  margin: 0 0 16px;
-  color: white;
-  font-size: 20px;
-  padding: 10px 0;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.cols {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.cols ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.cols li {
-  margin: 10px 0;
-}
-.cols a {
-  color: var(--text-on-purple);
-  text-decoration: none;
-}
-.cols a:hover,
-.cols a:focus {
-  text-decoration: underline;
-}
-
-/* Mobile tweaks */
-@media (max-width: 768px) {
-  .cols {
-    grid-template-columns: 1fr;
-  }
-  .mega-inner {
-    padding: 18px 14px 22px;
+  .page-wrapper {
+    padding: 1.5rem 3rem;
   }
 }
-
-@media (max-width: 600px) {
-  .header {
-    padding-left: 10px;
-    padding-right: 0;
-    height: 80px;
-  }
-
-  .landing {
-    padding: 5px auto;
-    width: 75vw;
-  }
-
-  .logo {
-    width: 70vw;
-    margin: 0;
-  }
-
-  .featureTile {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .featureTileReverse {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .label {
-    display: none;
-    width: 0px;
-  }
-
-  .menu-toggle {
-    width: 60px !important;
-    height: 80px;
-    padding: 10px auto !important;
-    margin-right: 0;
-  }
-
-  .mega {
-    top: 80px;
-  }
-
-  .landing {
-    width: 94%;
-    max-width: 1000px;
-    padding: 0 3% 20px 3%;
-  }
-
-  .subPage {
-    width: 94%;
-    max-width: 1000px;
-    padding: 0 3% 20px 3%;
-  }
-  
-.subPageFullInner {
-  margin-top: -30px;
-  padding: 0 3% 20px 3%;
-  margin-bottom: -50px;
-}
-}
-

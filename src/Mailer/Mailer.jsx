@@ -97,6 +97,16 @@ const Mailer = ({
     setGdprPrompt(true);
   };
 
+  const paperShadow = {
+    ...TextFieldStyle,
+    margin: "1px 0 7px 0",
+    padding: "5px",
+    paddingY: "15px",
+    border: "1px solid rgba(0, 0, 0, 0.65)",
+    borderRadius: 0,
+    boxShadow: "none",
+  }
+
   return (
     <div>
       <ScrollToTop />
@@ -105,8 +115,8 @@ const Mailer = ({
       <Box
         sx={{
           position: "relative",
-          marginTop: 2,
-          marginBottom: "14px",
+          marginTop: 4,
+          marginBottom: 4,
 
           width: "100%",
           "&:focus-within .paperBorder": {
@@ -118,11 +128,11 @@ const Mailer = ({
         <label
           style={{
             position: "absolute",
-            top: "-9px",
+            top: "-8px",
             left: "8px",
-            fontSize: "0.78rem",
-            fontWeight: "320",
-            color: "rgba(0,0,0,0.3)",
+            fontSize: "0.75rem",
+            fontWeight: "500",
+            color: "rgba(0,0,0,0.65)",
             backgroundColor: "white",
             padding: "0 5px",
             transition: "top 0.2s, font-size 0.2s, color 0.2s",
@@ -132,13 +142,7 @@ const Mailer = ({
         </label>
 
         <Paper
-          sx={{
-            ...TextFieldStyle,
-            margin: "1px 0 7px 0",
-            padding: "5px",
-            paddingY: "15px",
-            border: "1px solid lightgray",
-          }}
+          sx={paperShadow}
         >
           {messaging.map((msp) => (
             <Chip
@@ -255,8 +259,8 @@ const Mailer = ({
       <Box
         sx={{
           position: "relative",
-          marginTop: 2,
-          marginBottom: "14px",
+          marginTop: 4,
+          marginBottom: 4,
 
           width: "100%",
           "&:focus-within .paperBorder": {
@@ -268,11 +272,11 @@ const Mailer = ({
         <label
           style={{
             position: "absolute",
-            top: "-9px",
+            top: "-8px",
             left: "8px",
-            fontSize: "0.78rem",
-            fontWeight: "320",
-            color: "rgba(0,0,0,0.3)",
+            fontSize: "0.75rem",
+            fontWeight: "500",
+            color: "rgba(0,0,0,0.65)",
             backgroundColor: "white",
             padding: "0 5px",
             transition: "top 0.2s, font-size 0.2s, color 0.2s",
@@ -282,13 +286,7 @@ const Mailer = ({
         </label>
 
         <Paper
-          sx={{
-            ...TextFieldStyle,
-            margin: "1px 0 7px 0",
-            padding: "5px",
-            paddingY: "15px",
-            border: "1px solid lightgray",
-          }}
+          sx={paperShadow}
         >
           {copyIn ? (
             <Chip
@@ -326,11 +324,11 @@ const Mailer = ({
         promptsChanged={answers}
       />
       <div
-        style={{ marginTop: "-10px", fontSize: "small", textAlign: "center" }}
+        style={{ fontSize: "small", margin: "0.5rem 0 3rem" }}
       >
         <em>
           Your answers have been incorporated into the template message,
-          highlighted for you in yellow - check to make sure they still look
+          highlighted for you in <span className="highlightText">yellow</span> - check to make sure they still look
           okay!{" "}
         </em>
       </div>
@@ -338,8 +336,8 @@ const Mailer = ({
       <Box
         sx={{
           position: "relative",
-          marginTop: 2,
-          marginBottom: "14px",
+          marginTop: 4,
+          marginBottom: 4,
           border: optIn == undefined && gdprPrompt && "1px solid red",
           padding: optIn == undefined && gdprPrompt ? "4px" : 0,
           width: "100%",
@@ -349,18 +347,12 @@ const Mailer = ({
           },
         }}
       >
-        <div style={{ margin: "10px 0" }}>
+        <div>
           <FormControl component="fieldset">
-            <div
-              style={{
-                marginTop: "-10px",
-                fontSize: "small",
-                textAlign: "center",
-              }}
-            >
+            <legend style={{padding: 0}}>
               Do you want to share your details with Living Rent, in case we
               need to contact you to discuss it more?
-            </div>
+            </legend>
             <RadioGroup
               row
               value={optIn ? "yes" : optIn == false && "no"}

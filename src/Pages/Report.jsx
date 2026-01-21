@@ -11,7 +11,7 @@ const Report = () => {
   });
 
   return (
-		<div className="subPage">
+		<div className="page-wrapper">
 			<Breadcrumbs child="Report your landlord" />
 
 			<h1>Report your landlord</h1>
