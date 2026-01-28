@@ -17,8 +17,30 @@ import {
   CheckBoxStyle,
 } from "../MUIStyles";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
 
 const tolerableStandardNew = [
+	{
+		requirement: "not **wind and water tight**",
+	},
+	{
+		requirement: "not **reasonably fit for human habitation**",
+	},
+{
+	requirement: "supply of **water, gas, and electricit** not in a reasonable state of repair",
+},
+{
+	requirement: "**fittings, fixtures, appliances and furnishings** not in a reasonable state of repair",
+},
+{
+	requirement: "no satisfactory provision for **food storage and preparation**",
+},
+{
+	requirement: "**common parts of the house** cannot be safely accessed",
+},
+{
+	requirement: "**common tenement door** not secure",
+},
 	{
 		requirement: "is not **structurally stable**",
 	},
@@ -73,125 +95,35 @@ const tolerableStandardNew = [
 	},
 ];
 
-const tolerableStandard = [
-	{
-		requirement: "be structurally stable",
-		explanation: "this provision is mainly aimed at problems of subsidence",
-	},
-	{
-		requirement: "be substantially free from rising or penetrating damp",
-		explanation:
-			"it is important to note the use of the term 'substantially free', not 'completely free', and to note also that the standard does not extend to condensation dampness, although that may be covered by the next point",
-	},
-	{
-		requirement:
-			"have satisfactory provision for natural and artificial lighting, for ventilation and for heating",
-		explanation:
-			"Adequate natural lighting under good weather conditions should be available in rooms intended for sleeping, sitting or eating meals. A test for this is whether normal domestic activities can be undertaken without the aid of artificial light. Ventilation is thought to mean that fresh air can circulate easily to all rooms",
-	},
-	{ requirement: "have satisfactory thermal insulation", explanation: "" },
-	{
-		requirement:
-			"have an adequate piped supply of wholesome water available within the house",
-		explanation: "The water supply is for domestic use",
-	},
-	{
-		requirement:
-			"have a sink provided with a satisfactory supply of both hot and cold water within the house",
-		explanation: "",
-	},
-	{
-		requirement:
-			"have a water closet, or waterless closet, available for the exclusive use of the occupants of the house and suitably located within the house",
-		explanation:
-			"The toilet should be accessible to occupants without compromising their privacy and should be adequately lit and ventilated",
-	},
-	{
-		requirement:
-			"have a fixed bath or shower and a wash-hand basin, all of which must have a satisfactory supply of hot and cold water and be suitably located in the house",
-		explanation: "",
-	},
-	{
-		requirement:
-			"have an effective system for the drainage and disposal of foul and surface water",
-		explanation:
-			"Factors taken into account are the capacity of the system, susceptibility to leakages or blockages and whether foul air from sewage can enter the building",
-	},
-	{
-		requirement:
-			"have a supply of electricity, where electricity is supplied to the property, that complies with the relevant requirements in relation to electrical installation for that supply and is adequate and safe to use",
-		explanation: "",
-	},
-	{
-		requirement:
-			"have satisfactory facilities for the cooking of food within the house",
-		explanation:
-			"This does not necessarily mean that a cooker is actually installed, but as a minimum that there is the means of installing a gas or electric appliance",
-	},
-	{
-		requirement:
-			"have satisfactory access to all external doors and outbuildings",
-		explanation:
-			"If there is no adequate means of access to a house then there may be a breach of the landlord's repairing obligation.",
-	},
-	{
-		requirement:
-			"satisfactory equipment installed for detecting fire, and for giving warning of fire or suspected fire",
-		explanation: "",
-	},
-	{
-		requirement:
-			"satisfactory equipment installed for detecting, and for giving warning of, carbon monoxide present in a concentration that is hazardous to health",
-		explanation: "",
-	},
-];
-
 const FPPCriteria = [
-	{
-		requirement:
-			"any offence involving **fraud or other dishonesty, firearms, violence, or drugs**",
-	},
-	{
-		requirement: "any **sexual offense**",
-	},
-	{
-		requirement:
-			"unlawful **discrimination** in, or in connection with, the carrying on of any business",
-	},
-	{
-		requirement:
-			"contravention of any provision of the law relating to housing or **landlord and tenant law**",
-	},
-	{
-		requirement: "**offences** that are required to be disclosed",
-	},
-	{
-		requirement: "intelligence provided by **Police Scotland**",
-	},
-	{
-		requirement:
-			"the **landlord's knowledge of private tenancy law** and good practice",
-	},
-	{
-		requirement: "any **delay or attempt to avoid** registration",
-	},
-	{
-		requirement: "failure or delays in **providing information**",
-	},
-	{
-		requirement: "**complaints** from tenants or neighbours",
-	},
-	{
-		requirement:
-			"issues arising from registration or property management in **other local authority areas**",
-	},
-	{
-		requirement: "information about the **physical condition** of the property",
-	},
-	{
-		requirement:
-			"adverse decisions by the Housing and Property Chamber of the **First Tier Tribunal** (FTT)",
-	},
+{
+	requirement: "contravention of any provision of the law relating to housing or landlord and tenant law"
+},
+{ 
+	requirement: "the landlord's knowledge of private tenancy law and good practice"
+},
+{
+	requirement: "any delay or attempt to avoid registration"
+},
+{
+	requirement: "failure or delays in providing information"
+},
+{
+	requirement: "complaints from tenants or neighbours"
+},
+{
+	requirement: "information about the physical condition of the property"
+},
+{
+	requirement: "judgements against the landlord by the Housing and Property Chamber of the First Tier Tribunal (FTT)"
+},
+{
+	requirement: "any offence involving fraud or other dishonesty, firearms, violence, or drugs"
+},
+{
+	requirement: "any sexual offense"
+},
+{ requirement: "unlawful discrimination in, or in connection with, the carrying on of any business"}
 ];
 
 /** Single checkbox row */
@@ -285,7 +217,7 @@ const Prompts = ({ issue, blankTemplate }) => {
 	const handlePrompts = useCallback(() => {
 
 
-		const standardsText = `The following are aspects of the Tolerable Standard which my property does not meet:\n- ${standardsNotMet
+		const standardsText = `The following are aspects of the Repairing Standard which my property does not meet:\n- ${standardsNotMet
 			.map((st) => st.replaceAll("*", ""))
 			.join("\n- ")}`;
 
@@ -345,16 +277,62 @@ const Prompts = ({ issue, blankTemplate }) => {
 	if (stage === "prompts") {
 		return (
 			<div>
+				<h3 style={{marginBottom: '0'}}>Your details</h3>
+
+
+				<TextField
+					label="Your Name"
+					variant="outlined"
+					value={userName}
+					sx={TextFieldStyle}
+					onChange={(e) => setUserName(e.target.value)}
+					fullWidth
+				/>
+
+				<FetchTarget
+					postcode={postcode}
+					setPostcode={setPostcode}
+					adminDivisions={adminDivisions}
+					setAdminDivisions={setAdminDivisions}
+				/>
+
+				<EmailInput
+					userEmail={userEmail}
+					setUserEmail={setUserEmail}
+					emailClient={emailClient}
+					setEmailClient={setEmailClient}
+				/>
+
+				<TextField
+					label="Your number"
+          variant="outlined"
+					value={userNumber}
+					sx={TextFieldStyle}
+					onChange={(e) => setUserNumber(e.target.value)}
+					fullWidth
+				/>
+
+
+				<h3 style={{marginBottom: '0'}}>Your situation</h3>
+
+	<TextField
+					label="Your Story"
+          variant="outlined"
+          placeholder="Give as much detail about your situation as you can here - this will be incorporated into the body of your message to the Council"
+					value={userStory}
+					sx={TextFieldStyle}
+					onChange={(e) => setUserStory(e.target.value)}
+					multiline
+					rows={4}
+					fullWidth
+				/>
+
+
+
+
 				{issue === "repair" && (
 					<>
-						Your property must meet what's called the{" "}
-						<a href="../tolerable" target="_blank" rel="noreferrer">
-							"Tolerable Standard"
-						</a>
-						, and the Council is required to take action if it doesn't. To meet
-						the Tolerable Standard, your home must meet all of the following
-						criteria. Use the buttons below to say if any of the following apply
-						to your home:
+					In addition to the above, it can help strengthen your case to show clearly the ways in which your home fails to meet the Government’s <Link to="/repairingstandard">Repairing Standard</Link>. You can tick any of the following boxes that apply to your situation, and they will be incorporated into the draft message:
 						<br />
 						<div style={{ margin: "1.5rem 0" }}>
 							<Checklist
@@ -387,49 +365,10 @@ const Prompts = ({ issue, blankTemplate }) => {
 
 				<br />
 
-				<TextField
-					label="Your Name"
-					variant="outlined"
-					value={userName}
-					sx={TextFieldStyle}
-					onChange={(e) => setUserName(e.target.value)}
-					fullWidth
-				/>
 
-				<TextField
-					label="Your Story"
-          variant="outlined"
-          placeholder="Give as much detail about your situation as you can here"
-					value={userStory}
-					sx={TextFieldStyle}
-					onChange={(e) => setUserStory(e.target.value)}
-					multiline
-					rows={4}
-					fullWidth
-				/>
+			
 
-				<FetchTarget
-					postcode={postcode}
-					setPostcode={setPostcode}
-					adminDivisions={adminDivisions}
-					setAdminDivisions={setAdminDivisions}
-				/>
-
-				<EmailInput
-					userEmail={userEmail}
-					setUserEmail={setUserEmail}
-					emailClient={emailClient}
-					setEmailClient={setEmailClient}
-				/>
-
-				<TextField
-					label="Your number"
-          variant="outlined"
-					value={userNumber}
-					sx={TextFieldStyle}
-					onChange={(e) => setUserNumber(e.target.value)}
-					fullWidth
-				/>
+				
 
 				<Tooltip
 					title="Make sure you have filled out all the questions above"

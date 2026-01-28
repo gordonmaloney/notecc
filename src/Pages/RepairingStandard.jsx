@@ -1,18 +1,29 @@
 import React from "react";
 import Breadcrumbs from "../Components/Breadcrumbs";
 
-const TolerableStandard = () => {
+const RepairingStandard = () => {
   return (
     <div className="page-wrapper">
-      <Breadcrumbs child="The Tolerable Standard" />
+      <Breadcrumbs child="The Repairing Standard" />
 
       <section className="mx-auto max-w-3xl px-4 py-8">
-        <h1 className="text-3xl font-bold mb-4">The Tolerable Standard</h1>
+        <h1 className="text-3xl font-bold mb-4">The Repairing Standard</h1>
+
+       <p className="mb-4">
+The Repairing Standard is a set of criteria, laid out in law, that your home must meet. This includes:</p>
+
+ <ul className="list-disc pl-6 space-y-2">
+          <li>That the home must be <b>wind and water tight and in all other respects reasonably fit for human habitation</b>.</li>
+<li>That the <b>structure and exterior of the house</b> are in a reasonable state of repair.</li>
+<li>That the <b>supply of water, gas, electricity</b> and any other type of fuel is in a reasonable state.</li>
+<li>That and <b>fixtures, fittings, appliances and furnishings</b> provided by the landlord are in a reasonable state.</li>
+<li>That there is satisfactory <b>provision for food storage and preparation</b>.</li>
+<li>That <b>common parts of the house</b> can be safely accessed.</li>
+<li>And, in tenements, that <b>common doors</b> are secure.</li>
+</ul>
+
         <p className="mb-4">
-          This is the minimum standard required by Scottish law for a home to be
-          considered safe and liveable. If a property fails any one of these
-          points, it is legally below the tolerable standard and the council can
-          take action.
+       Additionally, the property must also meet the ‘Tolerable Standard’. This is the minimum standard required by Scottish law for a home to be considered safe and liveable. If a property fails any one of these points, it is legally below the tolerable standard and the council can take action.
         </p>
 
         <h2 className="text-xl font-semibold mt-6 mb-2">
@@ -81,4 +92,4 @@ const TolerableStandard = () => {
   );
 };
 
-export default TolerableStandard;
+export default RepairingStandard;

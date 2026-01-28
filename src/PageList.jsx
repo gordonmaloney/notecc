@@ -29,8 +29,8 @@ export const PageList = [
   },
 
   {
-    title: "The Tolerable Standard",
-    path: "/tolerable",
+    title: "The Repairing Standard",
+    path: "/repairingstandard",
     highlight: false,
     feature: false,
     col: 2,

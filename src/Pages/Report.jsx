@@ -16,15 +16,12 @@ const Report = () => {
 
 			<h1>Report your landlord</h1>
 
+<h3>Notify the Council if your landlord is in breach of their obligations under housing law.
+</h3>
 			<p>
-				By law, the Council must ensure that all registered landlords pass the
-				'fit and proper person' test, and they are meant to consider things like
-				breaches of housing law and the quality of the property when doing so.
-				<br />
-				<br />
-				If you believe your landlord doesn't meet that test, you can use this
-				tool to email the Council's enforcement team, copying in your local
-				councillors, to request them to get involved.
+				By law, the Council must ensure that all registered landlords pass the 'fit and proper person test. They are obliged to consider past breaches of housing law and the quality of the property when evaluating landlords, but our research shows that they simply don’t bother. Even when a landlord has been found guilty of a housing offense, the Council won’t strike them from the landlord register.
+<br/><br/>
+If you believe your landlord doesn't meet one of the requirements below, complete the form to request the Council's enforcement team, as well as your local councillors, get involved.
 			</p>
 
 			<Prompts

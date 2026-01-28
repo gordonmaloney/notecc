@@ -350,8 +350,7 @@ const Mailer = ({
         <div>
           <FormControl component="fieldset">
             <legend style={{padding: 0}}>
-              Do you want to share your details with Living Rent, in case we
-              need to contact you to discuss it more?
+         Are you happy to share your details with Living Rent, in case we need to contact you by phone or email to discuss supporting you with your case? You can read <a href="https://www.livingrent.org/privacy" target="_blank" rel="noopener noreferrer">our privacy policy here</a>.
             </legend>
             <RadioGroup
               row
