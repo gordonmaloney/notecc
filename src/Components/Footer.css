@@ -4,12 +4,15 @@
   border-top: 2px solid lightgrey;
   background-color: #6d3465;
   color: white;
+
 }
 
+
 .footer-content {
+  max-width: 1000px;
+padding-right: auto;
   display: flex;
   align-items: center;
-  max-width: 800px;
   gap: 2rem;
 }
 

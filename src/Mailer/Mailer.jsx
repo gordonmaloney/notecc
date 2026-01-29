@@ -324,7 +324,7 @@ const Mailer = ({
         promptsChanged={answers}
       />
       <div
-        style={{ fontSize: "small", margin: "0.5rem 0 3rem" }}
+        style={{ fontSize: "small", margin: "0.5rem 0 1rem" }}
       >
         <em>
           Your answers have been incorporated into the template message,
@@ -336,7 +336,7 @@ const Mailer = ({
       <Box
         sx={{
           position: "relative",
-          marginTop: 4,
+          fontSize: "small",
           marginBottom: 4,
           border: optIn == undefined && gdprPrompt && "1px solid red",
           padding: optIn == undefined && gdprPrompt ? "4px" : 0,
@@ -349,8 +349,8 @@ const Mailer = ({
       >
         <div>
           <FormControl component="fieldset">
-            <legend style={{padding: 0}}>
-         Are you happy to share your details with Living Rent, in case we need to contact you by phone or email to discuss supporting you with your case? You can read <a href="https://www.livingrent.org/privacy" target="_blank" rel="noopener noreferrer">our privacy policy here</a>.
+            <legend style={{padding: 0, fontWeight: "bold"}}>
+Stay in touch?
             </legend>
             <RadioGroup
               row
@@ -360,12 +360,13 @@ const Mailer = ({
               <FormControlLabel
                 value="yes"
                 control={<Radio style={CheckBoxStyle} />}
-                label="Yes"
+label={<span style={{fontSize: "small"}}>Yes (optional) — Living Rent can store my name, email, phone number, postcode, and a copy of the message I’m sending, and contact me by email or phone to offer support with my case. Please don’t include medical or other sensitive personal details unless it’s necessary.
+We aim to delete this information after 12 months but you can ask us to delete it sooner at any time by emailing privacy@livingrent.org. <a href="https://www.livingrent.org/privacy">Privacy Policy</a></span>}
               />
               <FormControlLabel
                 value="no"
                 control={<Radio style={CheckBoxStyle} />}
-                label="No"
+                label={<span style={{fontSize: "small"}}>No - I don't want to be contacted by Living Rent.</span>}
               />
             </RadioGroup>
           </FormControl>
