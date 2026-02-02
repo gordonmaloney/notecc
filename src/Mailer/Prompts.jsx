@@ -27,7 +27,7 @@ const tolerableStandardNew = [
 		requirement: "not **reasonably fit for human habitation**",
 	},
 {
-	requirement: "supply of **water, gas, and electricit** not in a reasonable state of repair",
+	requirement: "supply of **water, gas, and electricity** not in a reasonable state of repair",
 },
 {
 	requirement: "**fittings, fixtures, appliances and furnishings** not in a reasonable state of repair",
@@ -99,7 +99,7 @@ const FPPCriteria = [
 {
 	requirement: "contravention of any provision of the law relating to housing or landlord and tenant law"
 },
-{ 
+{
 	requirement: "the landlord's knowledge of private tenancy law and good practice"
 },
 {
@@ -277,7 +277,7 @@ const Prompts = ({ issue, blankTemplate }) => {
 	if (stage === "prompts") {
 		return (
 			<div>
-				<h3 style={{marginBottom: '0'}}>Your details</h3>
+				<h3 style={{marginBottom: '0.25em'}}>Your details</h3>
 
 
 				<TextField
@@ -313,12 +313,12 @@ const Prompts = ({ issue, blankTemplate }) => {
 				/>
 
 
-				<h3 style={{marginBottom: '0'}}>Your situation</h3>
+				<h3 style={{marginBottom: '0.25em'}}>Your situation</h3>
 
 	<TextField
 					label="Your Story"
           variant="outlined"
-          placeholder="Give as much detail about your situation as you can here - this will be incorporated into the body of your message to the Council"
+          helperText="Give as much detail about your situation as you can here - this will be incorporated into the body of your message to the Council"
 					value={userStory}
 					sx={TextFieldStyle}
 					onChange={(e) => setUserStory(e.target.value)}
@@ -347,10 +347,8 @@ const Prompts = ({ issue, blankTemplate }) => {
 				{issue === "report" && (
 					<>
 						Your landlord must meet what's called the{" "}
-						<a href="../fpp" target="_blank" rel="noreferrer">
-							"fit and proper person test"
-						</a>
-						. If you have concerns about any of the following in relation to
+						<Link to="./fpp">Fit and Proper Person</Link>{" "}
+						test. If you have concerns about any of the following in relation to
 						your landlord, tick them below:
 						<br />
 						<div style={{ margin: "1.5rem 0" }}>
@@ -366,9 +364,9 @@ const Prompts = ({ issue, blankTemplate }) => {
 				<br />
 
 
-			
 
-				
+
+
 
 				<Tooltip
 					title="Make sure you have filled out all the questions above"

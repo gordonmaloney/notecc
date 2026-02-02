@@ -18,23 +18,19 @@ Unaffordable rents are driving tenants to the brink of poverty and homelessness.
         <br />
         <br />
         <center>
-          <b>We cannot continue like this. And we don’t have to.</b>
+          <p class="subtitle">We cannot continue like this. And we don’t have to.</p>
         </center>
         <br />
         The Council already has all the powers it needs to act. Indeed, many of the powers the Council has are ones they are legally obligated to fulfil. However, as this report outlines, these are powers and duties that the Council is routinely neglecting. That means letting rogue landlords off the hook and letting tenants down.
       </p>
 
-      <p>
-        <strong>
-        Read our full report, exposing the lack of enforcement actions from the
-        Council{" "}
+      <p class="subtitle">
+        Read our{" "}
         <a
           href="https://assets.nationbuilder.com/livingrent/pages/6200/attachments/original/1754591516/Letting_Landlords_Off_The_Hook_PDF.pdf?1754591516"
           target="_blank"
-        >
-          here
-        </a>
-        .</strong>
+        >full report</a> exposing the lack of enforcement actions from the
+        Council.
       </p>
     </div>
   );

@@ -68,6 +68,12 @@ p {
   background-color: yellow;
 }
 
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+}
+
 /**
  * Content container
  *
