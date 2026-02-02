@@ -359,14 +359,16 @@ Stay in touch?
             >
               <FormControlLabel
                 value="yes"
+                sx={{ alignItems: "flex-start"}}
                 control={<Radio style={CheckBoxStyle} />}
-label={<span style={{fontSize: "small"}}>Yes (optional) — Living Rent can store my name, email, phone number, postcode, and a copy of the message I’m sending, and contact me by email or phone to offer support with my case. Please don’t include medical or other sensitive personal details unless it’s necessary.
-We aim to delete this information after 12 months but you can ask us to delete it sooner at any time by emailing privacy@livingrent.org. <a href="https://www.livingrent.org/privacy">Privacy Policy</a></span>}
+                label={<span style={{display: "inline-block", paddingTop: "0.9em", fontSize: "small"}}>Yes (optional) — Living Rent can store my name, email, phone number, postcode, and a copy of the message I’m sending, and contact me by email or phone to offer support with my case. Please don’t include medical or other sensitive personal details unless it’s necessary.
+                We aim to delete this information after 12 months but you can ask us to delete it sooner at any time by emailing privacy@livingrent.org. <a href="https://www.livingrent.org/privacy">Privacy Policy</a></span>}
               />
               <FormControlLabel
                 value="no"
+                sx={{ alignItems: "flex-start" }}
                 control={<Radio style={CheckBoxStyle} />}
-                label={<span style={{fontSize: "small"}}>No - I don't want to be contacted by Living Rent.</span>}
+                label={<span style={{display: "inline-block", paddingTop: "0.9em", fontSize: "small"}}>No - I don't want to be contacted by Living Rent.</span>}
               />
             </RadioGroup>
           </FormControl>

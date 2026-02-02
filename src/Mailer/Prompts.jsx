@@ -7,6 +7,11 @@ import {
   FormControlLabel,
   Checkbox,
   FormGroup,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+	Stack,
 } from "@mui/material";
 import FetchTarget from "./FetchTarget";
 import EmailInput from "./ClientHandling/EmailInput";
@@ -27,7 +32,7 @@ const tolerableStandardNew = [
 		requirement: "not **reasonably fit for human habitation**",
 	},
 {
-	requirement: "supply of **water, gas, and electricit** not in a reasonable state of repair",
+	requirement: "supply of **water, gas, and electricity** not in a reasonable state of repair",
 },
 {
 	requirement: "**fittings, fixtures, appliances and furnishings** not in a reasonable state of repair",
@@ -99,7 +104,7 @@ const FPPCriteria = [
 {
 	requirement: "contravention of any provision of the law relating to housing or landlord and tenant law"
 },
-{ 
+{
 	requirement: "the landlord's knowledge of private tenancy law and good practice"
 },
 {
@@ -204,6 +209,39 @@ const Prompts = ({ issue, blankTemplate }) => {
 	// tolerable standard selections
 	const [standardsNotMet, setStandardsNotMet] = useState([]);
 
+	const [dateStart, setDateStart] = useState('')
+	const [dateEnd, setDateEnd] = useState('')
+
+	const handleDateStartChange = (event) => {
+		setDateStart(event.target.value)
+	}
+
+	const handleDateEndChange = (event) => {
+		setDateEnd(event.target.value)
+	}
+
+	const getDateOptions = () => {
+		const currentDate = new Date()
+		currentDate.setDate(1)
+		const dates = []
+		while (currentDate.getFullYear() > 2021) {
+			dates.push({
+				value: [
+					currentDate.getFullYear(),
+					(currentDate.getMonth() + 1).toString().padStart(2, '0'),
+				].join('-'),
+				label: [
+					currentDate.toLocaleString('default', {month: 'long'}),
+					currentDate.getFullYear(),
+				].join(', ')
+			})
+			currentDate.setMonth(currentDate.getMonth() - 1)
+		}
+		return dates
+	}
+
+	const dateOptions = getDateOptions()
+
 	const handleToggle = useCallback(
 		(requirement) => (e) => {
 			const checked = e.target.checked;
@@ -277,7 +315,7 @@ const Prompts = ({ issue, blankTemplate }) => {
 	if (stage === "prompts") {
 		return (
 			<div>
-				<h3 style={{marginBottom: '0'}}>Your details</h3>
+				<h3 style={{marginBottom: '0.25em'}}>Your details</h3>
 
 
 				<TextField
@@ -313,12 +351,12 @@ const Prompts = ({ issue, blankTemplate }) => {
 				/>
 
 
-				<h3 style={{marginBottom: '0'}}>Your situation</h3>
+				<h3 style={{marginBottom: '0.25em'}}>Your situation</h3>
 
 	<TextField
 					label="Your Story"
           variant="outlined"
-          placeholder="Give as much detail about your situation as you can here - this will be incorporated into the body of your message to the Council"
+          helperText="Give as much detail about your situation as you can here - this will be incorporated into the body of your message to the Council"
 					value={userStory}
 					sx={TextFieldStyle}
 					onChange={(e) => setUserStory(e.target.value)}
@@ -328,7 +366,57 @@ const Prompts = ({ issue, blankTemplate }) => {
 				/>
 
 
+				<h3 style={{marginBottom: '0.25em'}}>Your timeline</h3>
+				<p>Let us know when your situation occurred. If you are no longer facing this problem, let us know when you left the property or the situation was sufficiently remedied.</p>
 
+				<Stack
+					direction={{
+						xs: 'column',
+						sm: 'row',
+					}}
+					spacing={2}
+					maxWidth={'60ch'}
+					marginBottom={'2rem'}
+				>
+					<FormControl fullWidth>
+						<InputLabel id="date-start">When it started</InputLabel>
+						<Select
+							labelId="date-start"
+							id="date-start-select"
+							value={dateStart}
+							label="When it started"
+							onChange={handleDateStartChange}
+						>
+							<MenuItem value="">I can't remember</MenuItem>
+							{dateOptions.map((option) => {
+								return (
+									<MenuItem value={option.value}>{option.label}</MenuItem>
+								)
+							})}
+							<MenuItem value="<2022">Some time before 2022</MenuItem>
+						</Select>
+					</FormControl>
+					<FormControl fullWidth>
+						<InputLabel id="date-start">When it ended</InputLabel>
+						<Select
+							labelId="date-start"
+							id="date-start-select"
+							value={dateEnd}
+							label="When it ended"
+							onChange={handleDateEndChange}
+							helperText="If you left the property before the"
+						>
+							<MenuItem value={'ongoing'}>I'm still facing this problem</MenuItem>
+							<MenuItem value={'left-property'}>I left the property before the problem was fixed.</MenuItem>
+							{dateOptions.map((option) => {
+								return (
+									<MenuItem value={option.value}>{option.label}</MenuItem>
+								)
+							})}
+							<MenuItem value="<2022">Some time before 2022</MenuItem>
+						</Select>
+					</FormControl>
+				</Stack>
 
 				{issue === "repair" && (
 					<>
@@ -347,10 +435,8 @@ const Prompts = ({ issue, blankTemplate }) => {
 				{issue === "report" && (
 					<>
 						Your landlord must meet what's called the{" "}
-						<a href="../fpp" target="_blank" rel="noreferrer">
-							"fit and proper person test"
-						</a>
-						. If you have concerns about any of the following in relation to
+						<Link to="./fpp">Fit and Proper Person</Link>{" "}
+						test. If you have concerns about any of the following in relation to
 						your landlord, tick them below:
 						<br />
 						<div style={{ margin: "1.5rem 0" }}>
@@ -366,9 +452,9 @@ const Prompts = ({ issue, blankTemplate }) => {
 				<br />
 
 
-			
 
-				
+
+
 
 				<Tooltip
 					title="Make sure you have filled out all the questions above"

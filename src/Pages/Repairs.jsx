@@ -18,12 +18,13 @@ const Repairs = () => {
 
       <h1>Get help with repairs</h1>
 
-      
 
-      <h3>Notify the Council if your landlord refuses to make necessary repairs in your home.</h3>
+      <p class="subtitle">
+        Notify the Council if your landlord refuses to make necessary repairs in your home.
+      </p>
 
       <p>
-        Despite what they may tell you, the Council has the <b>legal obligation</b> to ensure that all properties in the city meet the 'Tolerable Standard', and they have a wide range of powers and tools to force landlords to take action. Our research found that they rarely use these powers unless they’re forced to do so by tenants like us.
+        Despite what they may tell you, the Council has the <b>legal obligation</b> to ensure that all properties in the city meet the <Link to="./repairingstandard">Tolerable Standard</Link>, and they have a wide range of powers and tools to force landlords to take action. Our <a href="https://assets.nationbuilder.com/livingrent/pages/6200/attachments/original/1754591516/Letting_Landlords_Off_The_Hook_PDF.pdf" target="_blank">research</a> found that they rarely use these powers unless they’re forced to do so by tenants like us.
 <br/><br/>
 You can use the form below to remind the Council's enforcement team, as well as your local councillors, of their obligations and ask for support.
 
