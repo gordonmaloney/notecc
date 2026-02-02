@@ -7,6 +7,11 @@ import {
   FormControlLabel,
   Checkbox,
   FormGroup,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+	Stack,
 } from "@mui/material";
 import FetchTarget from "./FetchTarget";
 import EmailInput from "./ClientHandling/EmailInput";
@@ -204,6 +209,39 @@ const Prompts = ({ issue, blankTemplate }) => {
 	// tolerable standard selections
 	const [standardsNotMet, setStandardsNotMet] = useState([]);
 
+	const [dateStart, setDateStart] = useState('')
+	const [dateEnd, setDateEnd] = useState('')
+
+	const handleDateStartChange = (event) => {
+		setDateStart(event.target.value)
+	}
+
+	const handleDateEndChange = (event) => {
+		setDateEnd(event.target.value)
+	}
+
+	const getDateOptions = () => {
+		const currentDate = new Date()
+		currentDate.setDate(1)
+		const dates = []
+		while (currentDate.getFullYear() > 2021) {
+			dates.push({
+				value: [
+					currentDate.getFullYear(),
+					(currentDate.getMonth() + 1).toString().padStart(2, '0'),
+				].join('-'),
+				label: [
+					currentDate.toLocaleString('default', {month: 'long'}),
+					currentDate.getFullYear(),
+				].join(', ')
+			})
+			currentDate.setMonth(currentDate.getMonth() - 1)
+		}
+		return dates
+	}
+
+	const dateOptions = getDateOptions()
+
 	const handleToggle = useCallback(
 		(requirement) => (e) => {
 			const checked = e.target.checked;
@@ -328,7 +366,57 @@ const Prompts = ({ issue, blankTemplate }) => {
 				/>
 
 
+				<h3 style={{marginBottom: '0.25em'}}>Your timeline</h3>
+				<p>Let us know when your situation occurred. If you are no longer facing this problem, let us know when you left the property or the situation was sufficiently remedied.</p>
 
+				<Stack
+					direction={{
+						xs: 'column',
+						sm: 'row',
+					}}
+					spacing={2}
+					maxWidth={'60ch'}
+					marginBottom={'2rem'}
+				>
+					<FormControl fullWidth>
+						<InputLabel id="date-start">When it started</InputLabel>
+						<Select
+							labelId="date-start"
+							id="date-start-select"
+							value={dateStart}
+							label="When it started"
+							onChange={handleDateStartChange}
+						>
+							<MenuItem value="">I can't remember</MenuItem>
+							{dateOptions.map((option) => {
+								return (
+									<MenuItem value={option.value}>{option.label}</MenuItem>
+								)
+							})}
+							<MenuItem value="<2022">Some time before 2022</MenuItem>
+						</Select>
+					</FormControl>
+					<FormControl fullWidth>
+						<InputLabel id="date-start">When it ended</InputLabel>
+						<Select
+							labelId="date-start"
+							id="date-start-select"
+							value={dateEnd}
+							label="When it ended"
+							onChange={handleDateEndChange}
+							helperText="If you left the property before the"
+						>
+							<MenuItem value={'ongoing'}>I'm still facing this problem</MenuItem>
+							<MenuItem value={'left-property'}>I left the property before the problem was fixed.</MenuItem>
+							{dateOptions.map((option) => {
+								return (
+									<MenuItem value={option.value}>{option.label}</MenuItem>
+								)
+							})}
+							<MenuItem value="<2022">Some time before 2022</MenuItem>
+						</Select>
+					</FormControl>
+				</Stack>
 
 				{issue === "repair" && (
 					<>
