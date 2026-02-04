@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Modal, Button, Box, Tooltip, Grid } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { BtnStyle, BtnStylePrimary, BtnStyleSmall, BtnStyleTiny } from "../MUIStyles";
+import {
+  BtnStyle,
+  BtnStylePrimary,
+  BtnStyleSmall,
+  BtnStyleTiny,
+} from "../MUIStyles";
 import { webmailProviders } from "./ClientHandling/webmailProviders";
 import { Stack } from "@mui/material";
 import { submitter } from "../submitter";
-
 
 const ModalStyle = {
   position: "absolute",
@@ -65,12 +69,13 @@ export const SendModal = ({
       sendLink = providerConfig.composeUrl(toList, SL, body, effectiveBcc);
     } else {
       // 4b) mailto: fallback
-      const params = new URLSearchParams();
-      if (SL) params.set("subject", encodeURIComponent(SL));
-      if (body) params.set("body", encodeURIComponent(body));
-      if (effectiveBcc) params.set("bcc", effectiveBcc);
+      const subject = encodeURIComponent(SL || "");
+      const content = encodeURIComponent(body || "");
+      const bccList = effectiveBcc
+        ? `&bcc=${encodeURIComponent(effectiveBcc)}`
+        : "";
 
-      sendLink = `mailto:${toList}?${params.toString()}`;
+      sendLink = `mailto:${toList}?subject=${subject}&body=${content}${bccList}`;
     }
 
     // 5) return link
@@ -95,12 +100,10 @@ export const SendModal = ({
   };
 
   const handleSendButton = () => {
-
     if (optIn == undefined) {
       handleSendClicked();
       return;
     }
-
 
     setIsOpen(true);
 
@@ -129,7 +132,13 @@ export const SendModal = ({
             <CloseIcon />
           </span>
 
-          <h1 style={{ fontSize: "1.5rem", lineHeight: "1", margin: "0 1rem 1.5rem 0" }}>
+          <h1
+            style={{
+              fontSize: "1.5rem",
+              lineHeight: "1",
+              margin: "0 1rem 1.5rem 0",
+            }}
+          >
             {sent ? "What now?" : "Send your message"}
           </h1>
 
@@ -152,7 +161,7 @@ export const SendModal = ({
                   fullWidth={true}
                   onClick={() =>
                     navigator.clipboard.writeText(
-                      `${messaging.map((targ) => targ.email + `,`)}  ${bcc}`
+                      `${messaging.map((targ) => targ.email + `,`)}  ${bcc}`,
                     )
                   }
                 >
@@ -189,7 +198,7 @@ export const SendModal = ({
                   setSent(true);
                 }}
                 sx={BtnStylePrimary}
-                style={{marginTop: "0.5rem"}}
+                style={{ marginTop: "0.5rem" }}
                 fullWidth={true}
               >
                 Send{" "}
@@ -231,36 +240,36 @@ export const SendModal = ({
                 <b>take a moment to share the campaign with a few friends?</b>{" "}
                 You can use the buttons below:
               </p>
-                <Stack
-                  direction="row"
-                  justifyContent="center"
-                  flexWrap="wrap" // so buttons drop to the next line on small screens
-                  gap="0.5rem"
+              <Stack
+                direction="row"
+                justifyContent="center"
+                flexWrap="wrap" // so buttons drop to the next line on small screens
+                gap="0.5rem"
+              >
+                <Button
+                  sx={BtnStyle}
+                  target="_blank"
+                  href={`http://wa.me/?text=${encodeURI(
+                    "Hey! I've just taken part in this campaign - check it out here: " +
+                      title +
+                      " " +
+                      window.location.href,
+                  )}`}
+                  fullWidth={true}
                 >
-                  <Button
-                    sx={BtnStyle}
-                    target="_blank"
-                    href={`http://wa.me/?text=${encodeURI(
-                      "Hey! I've just taken part in this campaign - check it out here: " +
-                        title +
-                        " " +
-                        window.location.href
-                    )}`}
-                    fullWidth={true}
-                  >
-                    Share on WhatsApp
-                  </Button>
-                  <Button
-                    sx={BtnStyle}
-                    target="_blank"
-                    href={`https://bsky.app/intent/compose?text=${encodeURI(
-                      title + " " + window.location.href
-                    )}`}
-                    fullWidth={true}
-                  >
-                    Share on BlueSky
-                  </Button>
-                </Stack>
+                  Share on WhatsApp
+                </Button>
+                <Button
+                  sx={BtnStyle}
+                  target="_blank"
+                  href={`https://bsky.app/intent/compose?text=${encodeURI(
+                    title + " " + window.location.href,
+                  )}`}
+                  fullWidth={true}
+                >
+                  Share on BlueSky
+                </Button>
+              </Stack>
 
               <p>
                 You can also just{" "}
