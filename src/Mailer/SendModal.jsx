@@ -66,7 +66,7 @@ export const SendModal = ({
     } else {
       // 4b) mailto: fallback
       const params = new URLSearchParams();
-      if (SL) params.set("subject", SL);
+      if (SL) params.set("subject", encodeURIComponent(SL));
       if (body) params.set("body", encodeURIComponent(body));
       if (effectiveBcc) params.set("bcc", effectiveBcc);
 
