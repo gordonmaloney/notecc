@@ -113,6 +113,7 @@ export const SendModal = ({
         type: "submission",
         site: "portal",
         campaignId: "Tenant Complaints Portal",
+        testimonial: body,
         complaintDeets: complaintDeets,
         contactDeets: contactDetails,
       });
