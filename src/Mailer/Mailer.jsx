@@ -33,6 +33,7 @@ const Mailer = ({
   adminDivisions,
   standardsNotMet,
   contactDetails,
+  complaintDeets,
 }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -141,9 +142,7 @@ const Mailer = ({
           To
         </label>
 
-        <Paper
-          sx={paperShadow}
-        >
+        <Paper sx={paperShadow}>
           {messaging.map((msp) => (
             <Chip
               key={msp.name}
@@ -152,13 +151,13 @@ const Mailer = ({
               sx={{ margin: "2px" }}
               onClick={() => {
                 setMessaging((prev) =>
-                  prev.filter((prevTarget) => prevTarget.name !== msp.name)
+                  prev.filter((prevTarget) => prevTarget.name !== msp.name),
                 );
                 setNotMessaging((prev) => [...prev, msp]);
               }}
               onDelete={() => {
                 setMessaging((prev) =>
-                  prev.filter((prevTarget) => prevTarget.name !== msp.name)
+                  prev.filter((prevTarget) => prevTarget.name !== msp.name),
                 );
                 setNotMessaging((prev) => [...prev, msp]);
               }}
@@ -233,16 +232,16 @@ const Mailer = ({
                       onDelete={() => {
                         setNotMessaging((prev) =>
                           prev.filter(
-                            (prevTarget) => prevTarget.name !== msp.name
-                          )
+                            (prevTarget) => prevTarget.name !== msp.name,
+                          ),
                         );
                         setMessaging((prev) => [...prev, msp]);
                       }}
                       onClick={() => {
                         setNotMessaging((prev) =>
                           prev.filter(
-                            (prevTarget) => prevTarget.name !== msp.name
-                          )
+                            (prevTarget) => prevTarget.name !== msp.name,
+                          ),
                         );
                         setMessaging((prev) => [...prev, msp]);
                       }}
@@ -285,9 +284,7 @@ const Mailer = ({
           BCC
         </label>
 
-        <Paper
-          sx={paperShadow}
-        >
+        <Paper sx={paperShadow}>
           {copyIn ? (
             <Chip
               key={"livingrent"}
@@ -302,13 +299,13 @@ const Mailer = ({
               }}
             />
           ) : (
-            <span
-            style={{marginLeft: "10px", fontStyle: "italic"}}
-            >
-              Are you sure? By copying Living Rent in, your story can help shape our campaign.{" "}
-              <span onClick={() => setCopyIn(true)}
-                style={{cursor: "pointer"}}
-                >
+            <span style={{ marginLeft: "10px", fontStyle: "italic" }}>
+              Are you sure? By copying Living Rent in, your story can help shape
+              our campaign.{" "}
+              <span
+                onClick={() => setCopyIn(true)}
+                style={{ cursor: "pointer" }}
+              >
                 <u>Add Living Rent back into BCC.</u>
               </span>
             </span>
@@ -323,13 +320,11 @@ const Mailer = ({
         onBodyChange={(e) => setTemplate(e)}
         promptsChanged={answers}
       />
-      <div
-        style={{ fontSize: "small", margin: "0.5rem 0 1rem" }}
-      >
+      <div style={{ fontSize: "small", margin: "0.5rem 0 1rem" }}>
         <em>
           Your answers have been incorporated into the template message,
-          highlighted for you in <span className="highlightText">yellow</span> - check to make sure they still look
-          okay!{" "}
+          highlighted for you in <span className="highlightText">yellow</span> -
+          check to make sure they still look okay!{" "}
         </em>
       </div>
 
@@ -349,8 +344,8 @@ const Mailer = ({
       >
         <div>
           <FormControl component="fieldset">
-            <legend style={{padding: 0, fontWeight: "bold"}}>
-Stay in touch?
+            <legend style={{ padding: 0, fontWeight: "bold" }}>
+              Stay in touch?
             </legend>
             <RadioGroup
               row
@@ -359,16 +354,44 @@ Stay in touch?
             >
               <FormControlLabel
                 value="yes"
-                sx={{ alignItems: "flex-start"}}
+                sx={{ alignItems: "flex-start" }}
                 control={<Radio style={CheckBoxStyle} />}
-                label={<span style={{display: "inline-block", paddingTop: "0.9em", fontSize: "small"}}>Yes (optional) — Living Rent can store my name, email, phone number, postcode, and a copy of the message I’m sending, and contact me by email or phone to offer support with my case. Please don’t include medical or other sensitive personal details unless it’s necessary.
-                We aim to delete this information after 12 months but you can ask us to delete it sooner at any time by emailing privacy@livingrent.org. <a href="https://www.livingrent.org/privacy">Privacy Policy</a></span>}
+                label={
+                  <span
+                    style={{
+                      display: "inline-block",
+                      paddingTop: "0.9em",
+                      fontSize: "small",
+                    }}
+                  >
+                    Yes (optional) — Living Rent can store my name, email, phone
+                    number, postcode, and a copy of the message I’m sending, and
+                    contact me by email or phone to offer support with my case.
+                    Please don’t include medical or other sensitive personal
+                    details unless it’s necessary. We aim to delete this
+                    information after 12 months but you can ask us to delete it
+                    sooner at any time by emailing privacy@livingrent.org.{" "}
+                    <a href="https://www.livingrent.org/privacy">
+                      Privacy Policy
+                    </a>
+                  </span>
+                }
               />
               <FormControlLabel
                 value="no"
                 sx={{ alignItems: "flex-start" }}
                 control={<Radio style={CheckBoxStyle} />}
-                label={<span style={{display: "inline-block", paddingTop: "0.9em", fontSize: "small"}}>No - I don't want to be contacted by Living Rent.</span>}
+                label={
+                  <span
+                    style={{
+                      display: "inline-block",
+                      paddingTop: "0.9em",
+                      fontSize: "small",
+                    }}
+                  >
+                    No - I don't want to be contacted by Living Rent.
+                  </span>
+                }
               />
             </RadioGroup>
           </FormControl>
@@ -407,6 +430,7 @@ Stay in touch?
         handleSendClicked={handleSendClicked}
         emailClient={emailClient}
         contactDetails={contactDetails}
+        complaintDeets={complaintDeets}
       />
     </div>
   );

@@ -44,6 +44,7 @@ export const SendModal = ({
   optIn,
   emailClient,
   contactDetails,
+  complaintDeets,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => {
@@ -112,8 +113,8 @@ export const SendModal = ({
         type: "submission",
         site: "portal",
         campaignId: "Tenant Complaints Portal",
+        complaintDeets: complaintDeets,
         contactDeets: contactDetails,
-        testimonial: body,
       });
   };
 
