@@ -3,7 +3,7 @@ export async function submitter({ campaignId, contactDeets, testimonial }) {
   const path = window.location.pathname;
   const site = "portal";
 
-  const body = { type, site, path, campaignId, testimonial, contactDeets };
+  const body = { type, site, path, campaignId, testimonial, contactDeets, complaintDeets };
 
   try {
     const res = await fetch("https://tenantactapi.vercel.app/api/submission", {
