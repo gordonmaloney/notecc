@@ -1,9 +1,22 @@
-export async function submitter({ campaignId, contactDeets, testimonial }) {
+export async function submitter({
+  campaignId,
+  contactDeets,
+  testimonial,
+  complaintDeets,
+}) {
   const type = "submission";
   const path = window.location.pathname;
   const site = "portal";
 
-  const body = { type, site, path, campaignId, testimonial, contactDeets, complaintDeets };
+  const body = {
+    type,
+    site,
+    path,
+    campaignId,
+    testimonial,
+    contactDeets,
+    complaintDeets,
+  };
 
   try {
     const res = await fetch("https://tenantactapi.vercel.app/api/submission", {
@@ -13,13 +26,12 @@ export async function submitter({ campaignId, contactDeets, testimonial }) {
     });
 
     if (res.ok) {
- 
       // optionally log server response (if any)
       const data = await res.json().catch(() => null);
     } else {
       console.warn(
         `⚠️ Submission failed: ${res.status} ${res.statusText}`,
-        await res.text()
+        await res.text(),
       );
     }
   } catch (e) {
