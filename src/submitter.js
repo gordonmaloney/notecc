@@ -19,7 +19,7 @@ export async function submitter({
   };
 
   try {
-    const res = await fetch("https://tenantactapi.vercel.app/api/submission", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/submission`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),

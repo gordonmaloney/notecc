@@ -29,126 +29,12 @@ import {
 } from "../MUIStyles";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
-
-const tolerableStandardNew = [
-  {
-    requirement: "not **wind and water tight**",
-  },
-  {
-    requirement: "not **reasonably fit for human habitation**",
-  },
-  {
-    requirement:
-      "supply of **water, gas, and electricity** not in a reasonable state of repair",
-  },
-  {
-    requirement:
-      "**fittings, fixtures, appliances and furnishings** not in a reasonable state of repair",
-  },
-  {
-    requirement:
-      "no satisfactory provision for **food storage and preparation**",
-  },
-  {
-    requirement: "**common parts of the house** cannot be safely accessed",
-  },
-  {
-    requirement: "**common tenement door** not secure",
-  },
-  {
-    requirement: "is not **structurally stable**",
-  },
-  {
-    requirement:
-      "is not substantially **free from rising or penetrating damp**",
-  },
-  {
-    requirement:
-      "does not have satisfactory provision for **natural and artificial lighting, for ventilation and for heating**",
-  },
-  { requirement: "does not have satisfactory **thermal insulation**" },
-  {
-    requirement:
-      "does not have an adequate **piped supply of wholesome water** available within the house",
-  },
-  {
-    requirement:
-      "does not have a sink provided with a satisfactory **supply of both hot and cold water** within the house",
-  },
-  {
-    requirement:
-      "does not have a **water closet, or waterless closet**, available for the exclusive use of the occupants of the house and suitably located within the house",
-  },
-  {
-    requirement:
-      "does not have a fixed **bath or shower and a wash-hand basin**, all of which must have a satisfactory supply of hot and cold water and be suitably located in the house",
-  },
-  {
-    requirement:
-      "does not have an effective system for the **drainage and disposal of foul and surface water**",
-  },
-  {
-    requirement:
-      "does not have a **supply of electricity**, where electricity is supplied to the property, that complies with the relevant requirements in relation to electrical installation for that supply and is adequate and safe to use",
-  },
-  {
-    requirement:
-      "does not have satisfactory **facilities for the cooking of food** within the house",
-  },
-  {
-    requirement:
-      "does not have satisfactory **access to all external doors** and outbuildings",
-  },
-  {
-    requirement:
-      "does not have satisfactory **equipment installed for detecting fire**, and for giving warning of fire or suspected fire",
-  },
-  {
-    requirement:
-      "does not have satisfactory **equipment installed for detecting, and for giving warning of, carbon monoxide** present in a concentration that is hazardous to health",
-  },
-];
-
-const FPPCriteria = [
-  {
-    requirement:
-      "contravention of any provision of the law relating to housing or landlord and tenant law",
-  },
-  {
-    requirement:
-      "the landlord's knowledge of private tenancy law and good practice",
-  },
-  {
-    requirement: "any delay or attempt to avoid registration",
-  },
-  {
-    requirement: "failure or delays in providing information",
-  },
-  {
-    requirement: "complaints from tenants or neighbours",
-  },
-  {
-    requirement: "information about the physical condition of the property",
-  },
-  {
-    requirement:
-      "judgements against the landlord by the Housing and Property Chamber of the First Tier Tribunal (FTT)",
-  },
-  {
-    requirement:
-      "any offence involving fraud or other dishonesty, firearms, violence, or drugs",
-  },
-  {
-    requirement: "any sexual offense",
-  },
-  {
-    requirement:
-      "unlawful discrimination in, or in connection with, the carrying on of any business",
-  },
-];
+import TolerableStandard from "../Data/TolerableStandard";
+import FitAndProperPerson from "../Data/FitAndProperPerson";
 
 /** Single checkbox row */
 const ChecklistItem = memo(function ChecklistItem({
+  key,
   requirement,
   checked,
   onToggle,
@@ -195,10 +81,10 @@ const Checklist = memo(function Checklist({ items, selected, onToggle }) {
       {" "}
       {items.map((it) => (
         <ChecklistItem
-          key={it.requirement}
+          key={it.id}
           requirement={it.requirement}
-          checked={selected.includes(it.requirement)}
-          onToggle={onToggle(it.requirement)}
+          checked={selected.includes(it.id)}
+          onToggle={onToggle(it.id)}
         />
       ))}
     </FormGroup>
@@ -277,11 +163,23 @@ const Prompts = ({ issue, blankTemplate }) => {
 
   const handlePrompts = useCallback(() => {
     const standardsText = `The following are aspects of the Repairing Standard which my property does not meet:\n- ${standardsNotMet
-      .map((st) => st.replaceAll("*", ""))
+      .map((st) => {
+        const standard = TolerableStandard.find(item => item.id === st)
+        if (standard) {
+          return standard.requirement.replaceAll("*", "")
+        }
+        return st
+      })
       .join("\n- ")}`;
 
     const FPPtext = `I have particular concerns about the following criteria regarding the fit and proper person test my landlord should meet:\n- ${standardsNotMet
-      .map((st) => st.replaceAll("*", ""))
+      .map((st) => {
+        const standard = FitAndProperPerson.find(item => item.id === st)
+        if (standard) {
+          return standard.requirement.replaceAll("*", "")
+        }
+        return st
+      })
       .join("\n- ")}`;
 
     setTemplate(
@@ -422,7 +320,7 @@ const Prompts = ({ issue, blankTemplate }) => {
               label="When it started"
               onChange={handleDateStartChange}
             >
-              <MenuItem value="">I can't remember</MenuItem>
+              <MenuItem value="none">I can't remember</MenuItem>
               {dateOptions.map((option) => {
                 return <MenuItem value={option.value}>{option.label}</MenuItem>;
               })}
@@ -463,7 +361,7 @@ const Prompts = ({ issue, blankTemplate }) => {
             <br />
             <div style={{ margin: "1.5rem 0" }}>
               <Checklist
-                items={tolerableStandardNew}
+                items={TolerableStandard}
                 selected={standardsNotMet}
                 onToggle={handleToggle}
               />
@@ -480,7 +378,7 @@ const Prompts = ({ issue, blankTemplate }) => {
             <br />
             <div style={{ margin: "1.5rem 0" }}>
               <Checklist
-                items={FPPCriteria}
+                items={FitAndProperPerson}
                 selected={standardsNotMet}
                 onToggle={handleToggle}
               />
