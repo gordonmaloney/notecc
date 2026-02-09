@@ -163,11 +163,23 @@ const Prompts = ({ issue, blankTemplate }) => {
 
   const handlePrompts = useCallback(() => {
     const standardsText = `The following are aspects of the Repairing Standard which my property does not meet:\n- ${standardsNotMet
-      .map((st) => st.replaceAll("*", ""))
+      .map((st) => {
+        const standard = TolerableStandard.find(item => item.id === st)
+        if (standard) {
+          return standard.requirement.replaceAll("*", "")
+        }
+        return st
+      })
       .join("\n- ")}`;
 
     const FPPtext = `I have particular concerns about the following criteria regarding the fit and proper person test my landlord should meet:\n- ${standardsNotMet
-      .map((st) => st.replaceAll("*", ""))
+      .map((st) => {
+        const standard = FitAndProperPerson.find(item => item.id === st)
+        if (standard) {
+          return standard.requirement.replaceAll("*", "")
+        }
+        return st
+      })
       .join("\n- ")}`;
 
     setTemplate(
