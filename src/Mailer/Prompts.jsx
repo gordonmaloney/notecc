@@ -422,7 +422,7 @@ const Prompts = ({ issue, blankTemplate }) => {
               label="When it started"
               onChange={handleDateStartChange}
             >
-              <MenuItem value="">I can't remember</MenuItem>
+              <MenuItem value="none">I can't remember</MenuItem>
               {dateOptions.map((option) => {
                 return <MenuItem value={option.value}>{option.label}</MenuItem>;
               })}
