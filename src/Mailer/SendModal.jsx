@@ -191,6 +191,10 @@ export const SendModal = ({
                 You're almost there. Press the button below to open your email
                 client, and the message will be pre-filled in there for you.
                 Then just hit send in there to fire it off.
+                <br />
+                <br />
+                If you have relevant photos or evidence, you can attach
+                that to your email too.
               </p>
               <Button
                 href={generateLink()}

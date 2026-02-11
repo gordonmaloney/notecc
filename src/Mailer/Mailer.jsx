@@ -60,19 +60,41 @@ const Mailer = ({
     let cancelled = false;
 
     fetch(
-      `https://raw.githubusercontent.com/gordonmaloney/rep-data/main/edinburgh-councillors.json`
+      `https://raw.githubusercontent.com/gordonmaloney/rep-data/main/edinburgh-councillors.json`,
     )
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch councillors");
         return res.json();
       })
       .then((data) => {
+        const wardCouncillors = data.filter(
+          (c) => c.ward == adminDivisions.ward,
+        );
+        const mandatoryRecipients = [
+          {
+            name: "Jane Meagher - Council Leader",
+            email: "Cllr.Jane.Meagher@edinburgh.gov.uk",
+          },
+          {
+            name: "Tim Pogson - Housing Convener",
+            email: "Cllr.Tim.Pogson@edinburgh.gov.uk",
+          },
+        ];
+
+        const additionalRecipients = mandatoryRecipients.filter(
+          (m) =>
+            !wardCouncillors.some(
+              (c) => c.email.toLowerCase() === m.email.toLowerCase(),
+            ),
+        );
+
         setMessaging([
           {
             name: "PRS Enforcement team",
             email: "prsenforcement@edinburgh.gov.uk",
           },
-          ...data.filter((c) => c.ward == adminDivisions.ward),
+          ...wardCouncillors,
+          ...additionalRecipients,
         ]);
         setLoading(false);
         if (data.filter((c) => c.ward == adminDivisions.ward).length == 0) {
@@ -106,7 +128,7 @@ const Mailer = ({
     border: "1px solid rgba(0, 0, 0, 0.65)",
     borderRadius: 0,
     boxShadow: "none",
-  }
+  };
 
   return (
     <div>
