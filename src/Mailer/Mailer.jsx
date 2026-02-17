@@ -393,7 +393,10 @@ const Mailer = ({
                     details unless it’s necessary. We aim to delete this
                     information after 12 months but you can ask us to delete it
                     sooner at any time by emailing privacy@livingrent.org.{" "}
-                    <a href="https://www.livingrent.org/privacy">
+                    <a
+                      href="https://www.livingrent.org/privacy"
+                      target="_blank"
+                    >
                       Privacy Policy
                     </a>
                   </span>
