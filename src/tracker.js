@@ -22,7 +22,7 @@ export async function tracker({ type, campaignId }) {
   const key = makeKey(body);
 
   if (alreadySent(key)) return; // ✅ don’t send twice per tab
-  const url = "https://tenantactapi.vercel.app/api/track";
+  const url = `${process.env.REACT_APP_API_URL}/api/track`
 
   try {
     // Prefer Beacon for reliability on unload/navigation

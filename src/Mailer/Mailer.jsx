@@ -60,7 +60,7 @@ const Mailer = ({
     let cancelled = false;
 
     fetch(
-      `https://raw.githubusercontent.com/gordonmaloney/rep-data/main/edinburgh-councillors.json`
+      `https://raw.githubusercontent.com/gordonmaloney/rep-data/main/edinburgh-councillors.json`,
     )
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch councillors");
@@ -106,7 +106,7 @@ const Mailer = ({
     border: "1px solid rgba(0, 0, 0, 0.65)",
     borderRadius: 0,
     boxShadow: "none",
-  }
+  };
 
   return (
     <div>
@@ -371,7 +371,10 @@ const Mailer = ({
                     details unless it’s necessary. We aim to delete this
                     information after 12 months but you can ask us to delete it
                     sooner at any time by emailing privacy@livingrent.org.{" "}
-                    <a href="https://www.livingrent.org/privacy">
+                    <a
+                      href="https://www.livingrent.org/privacy"
+                      target="_blank"
+                    >
                       Privacy Policy
                     </a>
                   </span>
